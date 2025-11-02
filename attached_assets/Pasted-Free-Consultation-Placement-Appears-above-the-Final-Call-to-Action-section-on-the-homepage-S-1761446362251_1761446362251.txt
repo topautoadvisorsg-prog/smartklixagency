@@ -1,0 +1,99 @@
+Free Consultation
+
+Placement:
+Appears above the Final Call to Action section on the homepage.
+
+🏷️ Section Title
+
+Limited-Time Offer: Free Consultation
+
+💬 Subtitle
+
+For a short time, SmartKlix is offering free one-on-one consultations.
+We’ll review your website, automations, and digital systems — and show you how to scale faster.
+
+🎯 CTA Button
+
+Book My Free Consultation →
+Links to /contact.html (no calendar integration — users submit availability manually).
+
+🎨 Design Requirements
+Element	Description
+Layout	2-column (text left / animation right)
+Background	Light gradient (#FFFFFF → #F9FAFB)
+Text Color	Navy #0D1B2A
+Button	Gold #F4B400 with soft glow hover
+Typography	Poppins (headline), Inter (body)
+Spacing	100px top / bottom
+Visual	Animated network / particle field or floating sphere on the right
+✨ Animation & Motion
+Element	Animation
+Section Entry	Fade-in from bottom + gentle rise
+Headline/Subtext	Sequential slide-up (staggered 0.15s)
+Button	Glow pulse on hover (box-shadow + brightness shift)
+Right Visual	Continuous soft motion (particles / float / parallax)
+Scroll Trigger	All animations triggered once via IntersectionObserver or AOS
+
+Right-Side Visual Options:
+
+Particle Field (preferred) — using tsparticles or lightweight vanilla JS:
+
+Slow-moving gold/blue dots connecting/disconnecting
+
+Subtle parallax shift on mouse move
+
+Soft glow fade (opacity 0.6–0.9)
+
+CSS Float Animation (fallback) — floating gold circle nodes w/ light pulse
+
+🧱 Code Guidelines
+
+No heavy frameworks (React or vanilla acceptable)
+
+Keep animations CSS-based (use @keyframes + transform, avoid JS-heavy loops)
+
+Semantic HTML5 structure
+
+Use modular CSS (SCSS, Tailwind, or component-level)
+
+Clean, readable code — no inline clutter
+
+✅ Example Markup
+<section id="free-consultation" class="relative bg-gradient-to-b from-white to-[#F9FAFB] py-24">
+  <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center px-6 max-w-6xl">
+    <div class="space-y-6">
+      <h2 class="text-4xl font-bold text-[#0D1B2A]">
+        Limited-Time Offer: Free Consultation
+      </h2>
+      <p class="text-lg text-[#1A2B3C]/80 leading-relaxed">
+        For a short time, SmartKlix is offering free one-on-one consultations.
+        We’ll review your website, automations, and digital systems — and show you how to scale faster.
+      </p>
+      <a href="/contact.html"
+         class="inline-block bg-[#F4B400] text-[#0D1B2A] font-medium px-8 py-3 rounded-lg shadow-md hover:shadow-lg hover:brightness-110 transition-all duration-300">
+         Book My Free Consultation →
+      </a>
+    </div>
+
+    <!-- Animated Right Visual -->
+    <div id="consultation-visual" class="relative w-full h-[300px] flex justify-center items-center">
+      <!-- Example: tsparticles canvas or CSS floating nodes -->
+      <canvas id="particleCanvas" class="w-full h-full"></canvas>
+    </div>
+  </div>
+</section>
+
+🪄 Suggested Visual Animation
+@keyframes floatPulse {
+  0%, 100% { transform: translateY(0); opacity: 0.9; }
+  50% { transform: translateY(-8px); opacity: 1; }
+}
+
+.node {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #F4B400 0%, #FFD95A 80%);
+  position: absolute;
+  animation: floatPulse 4s ease-in-out infinite;
+}

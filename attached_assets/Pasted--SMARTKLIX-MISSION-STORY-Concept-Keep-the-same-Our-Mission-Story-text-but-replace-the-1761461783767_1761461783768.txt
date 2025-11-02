@@ -1,0 +1,48 @@
+ SMARTKLIX — MISSION / STORY 
+🎯 Concept
+Keep the same “Our Mission & Story” text, but replace the right-side timeline visual with a rotating, glowing SmartKlix Sphere — customized for storytelling instead of services.
+
+🏷️ Headline
+Our Mission & Story: Building Systems That Build Businesses
+💬 Subheadline (same copy)
+SmartKlix started with a simple idea — that small businesses should have access to the same quality, automation, and scalability that big brands enjoy.
+What began as a small web development project evolved into a full-service digital systems agency. Today, we design conversion-ready websites, automate operations with GPT-powered systems, and craft brands built for growth.
+Our mission is to empower entrepreneurs with tools that save time, cut costs, and unlock their next level of success — because when your systems work smarter, you can focus on what truly matters: growing your business.
+
+🎨 Design Direction (v2 w/ Sphere)
+Element
+Description
+Visual (Right)
+Reuse the 3D glowing SmartKlix Sphere — 
+Dynamic Labels (optional)
+Subtle floating text fading in/out around sphere: Website Development, Automation Hub, Brand Systems (to reinforce service pillars).
+Background
+White-to-light gradient, faint grid pattern or particle flow.
+Lighting
+Gold glow highlight beneath sphere, soft light beam behind.
+Layout
+Split section — text left, animated sphere right (parallax-responsive).
+
+
+✨ Motion / UX Enhancements
+Element
+Motion
+Sphere
+Continuous slow rotation (8–10s loop) with gold/blue pulse through connecting lines.
+Labels
+Appear + fade-out in a gentle loop (e.g., every 5s rotate between Website Dev / Automation / Branding).
+Text Entry
+Slide-up and fade on scroll.
+Background
+Optional ambient particles moving diagonally (slow).
+Scroll Behavior
+Sphere shifts slightly for parallax illusion.
+
+
+⚙️ Developer Prompt
+Update the “Mission & Story” section to use the SmartKlix Sphere visual (instead of the timeline).
+ The right side should feature a glowing 3D network sphere (gold and navy tones) with smooth rotation and soft motion.
+ Optionally, cycle between three faint floating labels around it — “Website Development,” “Automation Hub,” and “Brand Systems.”
+ Maintain the same left-side text and layout.
+ Add soft fade-up animations for text and sphere parallax motion on scroll.
+ Keep theme light, clean, and performance-optimized (CSS or Lottie preferred).

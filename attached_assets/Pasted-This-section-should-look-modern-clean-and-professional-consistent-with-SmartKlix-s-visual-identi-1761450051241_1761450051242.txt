@@ -1,0 +1,65 @@
+This section should look modern, clean, and professional — consistent with SmartKlix’s visual identity and Webflow-level standards.
+
+💬 FAQ Content (6 Items)
+Question	Answer
+Are the audits really free?	Yes — your first audit is completely free. We’ll set up a quick call to understand your goals, evaluate your current setup, and show how SmartKlix can improve your systems.
+How does pricing work?	Every project is unique. After your free consultation, we’ll provide a clear proposal based on what you need — no hidden costs, no surprises.
+Do you work remotely?	Absolutely. We collaborate with clients nationwide and internationally, fully remote, using video calls and shared tools for seamless communication.
+Are you bilingual?	Yes! We serve both English and Spanish-speaking clients. Our entire process, from onboarding to support, can be handled in either language.
+Do you only build websites?	No — SmartKlix also provides automation, CRM integrations, SEO, and digital branding. We build complete digital systems, not just websites.
+How long does a typical project take?	Most websites and automation systems launch in days, not months — depending on scope and complexity.
+🎨 Design Direction (Light Theme)
+Element	Style
+Background	Very light gray or white (#FAFAFA)
+Questions	Dark navy text (#0D1B2A), bold Poppins font
+Answers	Medium gray (#4F4F4F), Inter regular font
+Icons	Gold plus/minus toggle (#F4B400)
+Borders	1px light gray divider (#E5E7EB) between each question
+Spacing	40–60px vertical padding, generous whitespace
+Typography	Poppins for titles / Inter for body text
+✨ Animations & Micro-Interactions
+Trigger	Effect
+On Scroll (section load)	Entire FAQ section fades in (0.4s, ease-in-out).
+On Click (expand/collapse)	Accordion smooth transition using max-height, opacity, and overflow: hidden for clean animation.
+Hover (question)	Question text turns gold with a subtle underline sweep animation.
+Optional Detail	Gold accent bar animates across the top of the FAQ section on page load (CSS keyframe).
+📱 Responsive Behavior
+
+Desktop: Two-column layout optional (3 FAQs per column).
+
+Tablet / Mobile: Single-column accordion stack with 100% width.
+
+Padding scales down to 24px on smaller devices.
+
+Ensure icons remain visible and clickable (minimum 24px target size).
+
+🧰 Developer Implementation Notes
+
+Use semantic markup (<section id="faq"> with <details> / <summary> or custom accordion).
+
+Use CSS transitions — no heavy JS libraries (AOS, GSAP optional if already included).
+
+Maintain modular CSS — place animations in reusable utility classes.
+
+Add aria-expanded attributes for accessibility and screen readers.
+
+Ensure gold icons swap between “+” and “–” smoothly (SVG rotation or path swap).
+
+✅ Example Markup Reference
+<section id="faq" class="faq-section">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Are the audits really free?</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes — your first audit is completely free. We’ll set up a quick call to understand your goals...</p>
+        </div>
+      </div>
+      <!-- Repeat for each question -->
+    </div>
+  </div>
+</section>

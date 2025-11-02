@@ -1,0 +1,61 @@
+SMART KLIX — CONTACT INFO & HOURS SECTION (FINAL PROMPT v2.0)
+🏷️ Headline
+
+Get in Touch — We’re Here When You Need Us
+
+💬 Subheadline
+
+Reach out with your project or question — our team responds within 24 hours.
+
+🎨 Design Direction — Modern, Floating, and Premium
+Element	Description
+Theme	Ultra-light gradient background (#FFFFFF → #F4F7FA) for depth and clarity.
+Layout	Four floating glassmorphic cards centered horizontally (stack vertically on mobile).
+Cards	Semi-transparent background (rgba(255,255,255,0.6)), soft blur (backdrop-filter: blur(12px)), rounded corners (16px), and shadow for lift.
+Icons	Lucide-react line icons inside gold circular outlines (#F4B400) — animated pulse (CSS keyframes).
+Typography	Poppins (bold for headings), Inter (regular for details).
+Accent	Thin connecting gold lines or dots between cards with a subtle flowing animation (“energy link” motion).
+Spacing	120px padding top / bottom, with consistent vertical rhythm.
+🕓 Content Structure
+Icon	Label	Text
+📅	Business Hours	Mon–Fri: 9AM – 6PM PST
+Sat: By appointment
+Sun: Closed
+✉️	Email	hello@smartklix.com
+
+📞	Phone	+1 (555) 555-5555
+🌎	Location	Remote — Serving clients worldwide
+
+(Use Lucide-react equivalents for all icons.)
+
+✨ Motion & Effects
+Element	Animation / Interaction
+Cards	Soft float (hover: translateY(-6px)) + gold glow border (box-shadow: 0 0 16px rgba(244,180,0,0.3)).
+Icons	Gold pulse every 6s (@keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.15); opacity: 0.8; } 100% { transform: scale(1); opacity: 1; } }).
+Connecting Lines	Animated gold gradient flowing continuously (CSS linear-gradient background-position loop).
+Scroll Entry	Fade-up stagger (0.15s delay per card) with ease-out.
+Optional	Parallax scroll on background gradient — slow, smooth hue shift.
+⚙️ Developer Implementation Notes
+
+Use Lucide-react icons only — no custom SVGs.
+
+Section container: <section id="contact-info" class="contact-info-section">
+
+No frameworks beyond React & Tailwind (already used).
+
+Maintain 100% responsiveness:
+
+Desktop: 4 columns evenly spaced
+
+Tablet: 2x2 grid
+
+Mobile: 1 column stack
+
+Keep animations CSS-based only — no GSAP.
+
+Clean, modular code — separate CSS module or Tailwind classes.
+
+✅ Expected Result
+
+A light, futuristic “Contact Info & Hours” section that feels premium, energetic, and consistent with Smart Klix’s Webflow-level agency design.
+The cards should feel alive, slightly glowing, and connected by smooth animated lines — projecting automation, precision, and intelligence.

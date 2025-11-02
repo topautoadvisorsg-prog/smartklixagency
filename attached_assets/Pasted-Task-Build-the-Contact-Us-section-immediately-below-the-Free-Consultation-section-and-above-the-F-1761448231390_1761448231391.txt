@@ -1,0 +1,97 @@
+Task:
+Build the “Contact Us” section immediately below the Free Consultation section and above the FAQ on the homepage.
+This will serve as the main inquiry form for SmartKlix, directing users to the /contact.html page when submitted.
+
+🧩 Section Content
+
+Title:
+Contact Us
+
+Subtitle:
+Let’s build something intelligent.
+Contact us today to schedule your free consultation.
+
+Form Fields:
+
+Name
+
+Email Address
+
+Phone Number
+
+Message
+
+Button:
+Send Message →
+Submit action → redirect to /contact.html or scroll to the main contact form.
+
+🎨 Visual Design
+Element	Description
+Layout	Two-column — form on the left, animated tech graphic on the right
+Background	Soft gradient (#FFFFFF → #F9FAFB)
+Form Container	White card with subtle shadow (0 8px 24px rgba(0,0,0,0.05)) and rounded corners (12px)
+Input Fields	Minimal border, 12px radius, light inner shadow on focus
+Button	SmartKlix gold (#F4B400) with glow effect on hover
+Typography	Poppins (headings), Inter (body)
+Text Color	Navy (#0D1B2A) for text, gray (#6B7280) for placeholders
+Icons / Right Graphic	Animated connection nodes (email, chat, link, growth) — matching SmartKlix gold accent
+⚡ Motion & UX Animations
+Trigger	Animation
+Section entry (scroll)	Fade-in upward (0 → 100% opacity, translateY 30px → 0, ease-out, duration 0.6s)
+Form card	Delayed fade-in (0.2s after section entry)
+Right-side animation	Floating connected nodes or lines with soft pulsing gold glow (continuous loop)
+Button hover	Subtle gold-to-lighter-gold gradient shift + soft glow shadow
+Form focus	Input border glows gold (#F4B400) when active
+Mouse move (desktop)	Right-side animation reacts slightly to cursor (parallax depth)
+🧠 UX & Responsive Behavior
+
+On desktop → two-column layout (form left, visual right).
+
+On mobile/tablet → stack vertically, form first, animation below (centered).
+
+Maintain at least 80–100px top/bottom padding for breathing space.
+
+Ensure form validation messages are clean and subtle (no harsh red highlights).
+
+Add ARIA labels and accessibility tags.
+
+🧰 Developer Implementation Notes
+
+Use lightweight CSS animations for floating and glow effects (avoid heavy JS).
+
+Right-side animation can use:
+
+Option A: tsparticles or lightweight canvas animation
+
+Option B: simple CSS keyframes for pulse + float + glow.
+
+Keep everything modular — wrap in <section id="contact-us"> block.
+
+Code must remain fully responsive and optimized (no layout shift on scroll).
+
+✅ Expected Visual Layout (in order)
+<section id="free-consultation"> ... </section>
+
+<section id="contact-us">
+  <div class="container two-col">
+    <div class="contact-left">
+      <h2>Contact Us</h2>
+      <p>Let’s build something intelligent.</p>
+      <p>Contact us today to schedule your free consultation.</p>
+
+      <form id="contact-form" action="/contact.html" method="get">
+        <input type="text" placeholder="Name" required />
+        <input type="email" placeholder="Email Address" required />
+        <input type="tel" placeholder="Phone Number" />
+        <textarea placeholder="Message"></textarea>
+        <button type="submit">Send Message →</button>
+      </form>
+    </div>
+
+    <div class="contact-right">
+      <!-- Animated network or particle field -->
+    </div>
+  </div>
+</section>
+
+<section id="faq"> ... </section>

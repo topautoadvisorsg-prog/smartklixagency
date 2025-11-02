@@ -1,0 +1,51 @@
+Build the Contact Page Hero Section using the finalized design and layout below.
+The video background will be added later, so for now use a temporary static background image as a placeholder.
+
+🏷️ Headline
+
+Looking to Build Something Intelligent?
+
+💬 Subheadline
+
+From intelligent websites to seamless automation — Smart Klix creates systems that think, adapt, and grow with your business.
+
+🎯 CTA Buttons
+
+Primary: Book a Free Consultation
+
+Secondary: Send a Message
+
+Both buttons should link to the existing contact page form or relevant anchor (#contact-form).
+
+🎨 Design & Layout
+Element	Description
+Background (Temporary)	Use a still image similar to the gold/navy flowing network (dark, elegant tech aesthetic). The animated video will replace this later.
+Overlay	Add a dark gradient overlay (rgba(0, 0, 0, 0.5)) for readability.
+Text Color	White for headline and subheadline.
+Buttons	Gold (#F4B400) for primary, white outline for secondary.
+Typography	Poppins Bold (headline) / Inter Regular (subheadline).
+Alignment	Centered vertically and horizontally within viewport.
+Spacing	~120 px top / 100 px bottom padding.
+Theme	Modern cinematic feel — sleek, calm, and intelligent.
+✨ Motion & UX Enhancements
+Element	Animation
+Section Entry	Smooth fade-in from bottom (opacity: 0 → 1, translateY: 30px → 0, duration 0.8 s, ease-out).
+Headline & Subheadline	Appear sequentially (stagger delay = 0.15 s).
+Buttons	Soft hover glow: gold → brighter gold for primary, white → gold border for secondary.
+Background Image	Apply slight parallax movement on scroll (subtle, smooth).
+Optional (Later)	Once the video file is ready, replace background with looping 8 s .mp4 or .webm (muted, autoplay, seamless).
+⚙️ Developer Implementation Notes
+
+Wrap section in <section id="contact-hero">
+
+Use clean modular code — no inline styles.
+
+For now, implement the placeholder background image with CSS (background-image, background-size: cover, background-position: center).
+
+Keep buttons and text accessible and responsive (legible on mobile).
+
+Optimize for performance — preload image, defer animations.
+
+✅ Expected Result
+
+A visually striking Contact Page hero section that feels premium and dynamic, ready to seamlessly transition into a looping background video once available.

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 100" fill="none">
+  <path d="M50 15C70.435 15 87 31.565 87 52C87 72.435 70.435 89 50 89C29.565 89 13 72.435 13 52C13 31.565 29.565 15 50 15ZM50 27C36.745 27 25 38.745 25 52C25 65.255 36.745 77 50 77C63.255 77 75 65.255 75 52C75 38.745 63.255 27 50 27Z" fill="#0D1B2A"/>
+  <path d="M50 35C58.284 35 65 41.716 65 50C65 58.284 58.284 65 50 65C41.716 65 35 58.284 35 50C35 41.716 41.716 35 50 35Z" fill="#F4B400"/>
+  <text x="105" y="60" font-family="Poppins, sans-serif" font-size="48" font-weight="700" fill="#0D1B2A">Smart</text>
+  <text x="105" y="85" font-family="Poppins, sans-serif" font-size="32" font-weight="600" fill="#0D1B2A">Klix</text>
+</svg>

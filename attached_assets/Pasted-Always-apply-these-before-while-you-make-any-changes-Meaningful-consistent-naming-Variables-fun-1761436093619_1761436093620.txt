@@ -1,0 +1,77 @@
+Always apply these before/while you make any changes.
+
+Meaningful, consistent naming
+
+Variables, functions/components, classes should clearly reflect what they do. Avoid vague names (“d”, “tmp1”, “x2”). 
+Gist
++3
+DEV Community
++3
+Full Scale
++3
+
+Follow the same naming conventions across the project (e.g., PascalCase for components, camelCase for functions).
+
+Single responsibility & modular structure
+
+Each component/module should do one thing well. If you see a component getting too large or doing many things, break it down. 
+Full Scale
++2
+freecodecamp.org
++2
+
+Reuse modules instead of duplicating code. Avoid “code clones.” 
+blog.codacy.com
++1
+
+Keep it simple (KISS)
+
+Don’t over-engineer. Use the simplest solution that works and is clear. Avoid unnecessary abstractions or complexity. 
+x-team.com
++1
+
+Don’t Repeat Yourself (DRY)
+
+Shared logic should live in one place. Don’t paste similar code in multiple places; extract into helper functions/components. 
+Wikipedia
++1
+
+Readable formatting & structure
+
+Use consistent indentation, spacing, and file structure. Clear separation of concerns (styles, markup, logic). 
+Medium
++1
+
+Avoid “divitis” (excessive, unnecessary wrappers) in HTML or markup. 
+Medium
+
+Effective comments & documentation
+
+Code should mostly be self-explaining. Use comments only when the “why” isn’t obvious from the “what”. 
+DEV Community
++1
+
+Maintain documentation (README, component description) when adding new major modules/features.
+
+Error handling, testability & maintainability
+
+Handle error / edge cases gracefully — prevent silent failures. 
+freecodecamp.org
+
+Structure code so it’s easy to expand or refactor. Keep future-proofing in mind (without overdoing it).
+
+Avoid “spaghetti code”
+
+Code should flow logically and predictably — no tangled logic, huge functions, or unclear dependencies. 
+Wikipedia
++1
+
+Version control & review culture
+
+Use clear commits, branches for features. Encourage peer/AI dev review of changes before merging major updates. 
+BrowserStack
++1
+
+Performance & unused code vigilance
+
+Remove dead/unused code. Optimize only after readability & correctness are achieved

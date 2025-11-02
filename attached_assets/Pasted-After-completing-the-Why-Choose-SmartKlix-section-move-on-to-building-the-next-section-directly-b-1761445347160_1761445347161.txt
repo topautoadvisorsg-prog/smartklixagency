@@ -1,0 +1,97 @@
+After completing the “Why Choose SmartKlix” section, move on to building the next section directly below it —
+the “How SmartKlix Works” process timeline.
+
+This is where we visually explain our workflow — it must feel dynamic, smooth, and high-end like a Webflow.com agency section.
+Think modern motion, clean flow, and connected storytelling.
+
+🏷️ SECTION CONTENT
+
+Section Title:
+
+How SmartKlix Works
+
+Subtitle:
+
+From discovery to launch, we follow a proven process that keeps your project fast, simple, and built for the future.
+
+⚙️ 4-Step Flow (Updated Copy)
+#	Step	Description
+1️⃣	Discover	We learn about your goals, audience, and brand vision — so every solution fits your business perfectly.
+2️⃣	Build	Our team designs and develops your website, automations, and integrated systems from the ground up.
+3️⃣	Automate (AI-Driven)	We integrate AI receptionists, GPT-powered systems, and advanced automations that streamline communication, leads, and operations — so your business runs 24/7.
+4️⃣	Grow	Once live, we optimize performance, SEO, and automation metrics — setting your brand up for long-term growth.
+🎨 VISUAL DESIGN & STRUCTURE
+
+Background: Subtle gradient #FFFFFF → #F9FAFB
+
+Layout:
+
+4 evenly spaced steps in a horizontal flow (timeline style)
+
+Gold circular icons connected by an animated line
+
+On mobile, becomes vertical with connected dots instead of a line
+
+Typography:
+
+Titles: Poppins (700)
+
+Descriptions: Inter (400), muted navy #1A2B3C
+
+Icons (lucide-react):
+
+Step 1: Search (Discover)
+
+Step 2: Monitor (Build)
+
+Step 3: Brain (Automate)
+
+Step 4: TrendingUp (Grow)
+
+Icon style:
+
+Gold background circles (#F4B400) with soft shadow (rgba(0,0,0,0.08))
+
+Icons in white (lucide-react, size ~28–32px)
+
+✨ MOTION & ANIMATION
+Element	Effect
+Connection line	Smooth CSS animation (gold → lighter gold) flowing horizontally, giving a subtle “energy current” effect.
+Step icons	Fade in sequentially on scroll, gentle pulse/glow on hover.
+Section entry	Entire line animates left → right when first scrolled into view.
+Hover state	Icon glows brighter, card title slides up 4px, and soft shadow fades in.
+Mobile behavior	Line becomes vertical with connected dots; each fades in step-by-step as user scrolls.
+
+Framer Motion or CSS Transitions:
+
+Use Framer Motion (preferred) or CSS transitions for scroll/hover.
+
+Timing: ease-in-out, 0.5–0.8s duration.
+
+No bounce, no jitter. Everything should glide smoothly.
+
+🧱 DEVELOPMENT INSTRUCTIONS
+
+Use React + Tailwind
+
+Use lucide-react icons only (no custom SVGs)
+
+Keep code modular and clean — no spaghetti, no hieroglyphs
+
+Build animations with Framer Motion where scroll behavior is required
+
+CSS-only transitions for the connection line and hover effects
+
+Section padding: 100px top / 100px bottom
+
+Use responsive spacing and percentage widths (no fixed pixels)
+
+✅ UX & FEEL
+
+This section acts as the heartbeat of the site — it represents our process and energy.
+
+Animation should guide the user’s eyes naturally across the flow.
+
+Keep everything subtle, looping, and fluid — never distracting.
+
+On scroll, it should feel like the timeline “comes alive.”
