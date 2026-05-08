@@ -1,0 +1,33 @@
+# API Keys and Secrets — NEVER commit these
+credentials/
+.env
+.env.local
+.env.production
+.env.development
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+.next/
+.nuxt/
+build/
+out/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Editor
+.vscode/settings.json
+.idea/
+
+# Hermes
+.hermes/
