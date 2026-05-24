@@ -187,7 +187,7 @@ export const en = {
     },
     overview: {
       title: "What We Offer",
-      description: "We specialize in connected systems that capture demand, nurture leads, and help your team focus on the opportunities most ready to move."
+      description: "We build the digital system around your business: websites, apps, SEO, branding, CRM automation, outreach support, and follow-up flows that help prospects trust you faster."
     },
     webDev: {
       title: "Conversion Focused Website Design & Development",

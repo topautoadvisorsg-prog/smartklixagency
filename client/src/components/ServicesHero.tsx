@@ -37,31 +37,22 @@ export default function ServicesHero() {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto"
         >
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="mb-5 text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-[#F4B400]"
-          >
-            {t.servicesPage.hero.pillars.websites} / {t.servicesPage.hero.pillars.apps} / {t.servicesPage.hero.pillars.automation} / {t.servicesPage.hero.pillars.branding}
-          </motion.p>
-
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
             className="font-heading font-bold text-5xl md:text-6xl lg:text-7xl leading-tight text-white drop-shadow-lg mb-6"
           >
             {t.servicesPage.hero.title}
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto leading-relaxed mb-8 drop-shadow"
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mb-8 text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-[#F4B400]"
           >
-            {t.servicesPage.hero.subtitle}
+            {t.servicesPage.hero.pillars.websites} / {t.servicesPage.hero.pillars.apps} / {t.servicesPage.hero.pillars.automation} / {t.servicesPage.hero.pillars.branding}
           </motion.p>
 
           {/* CTA Buttons | Centered */}
