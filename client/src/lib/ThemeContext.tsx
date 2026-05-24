@@ -14,8 +14,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(() => {
     const saved = localStorage.getItem("smartklix-theme");
     if (saved === "light" || saved === "dark") return saved;
-    // Fall back to system preference
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
     return "light";
   });
 

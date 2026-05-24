@@ -35,16 +35,16 @@ export default function Header() {
       <nav className="flex items-center justify-between w-full px-8 md:px-12 lg:px-20 h-[90px]">
         <Link 
           href="/" 
-          className="flex items-center gap-4 hover-elevate rounded-md px-2 py-2" 
+          className="flex min-w-0 items-center gap-2 sm:gap-4 hover-elevate rounded-md px-1 sm:px-2 py-2" 
           data-testid="link-home"
         >
           <img 
             src={logoWebp} 
             alt="Smart Klix - AI Websites and Business Automation Solutions Logo" 
-            className="w-[70px] h-auto" 
+            className="w-[52px] sm:w-[70px] h-auto flex-shrink-0" 
             data-testid="img-logo"
           />
-          <span className="font-heading font-semibold text-[34px] text-primary dark:text-white transition-colors" style={{ letterSpacing: '-0.01em' }}>
+          <span className="font-heading font-semibold text-[24px] sm:text-[34px] text-primary dark:text-white transition-colors whitespace-nowrap leading-none">
             Smart Klix
           </span>
         </Link>

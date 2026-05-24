@@ -97,13 +97,13 @@ export default function TeamGrid({ members }: TeamGridProps) {
           }`}
         >
           <h2 
-            className="font-heading font-bold text-5xl text-foreground mb-6"
+            className="font-heading font-bold text-5xl text-slate-950 mb-6"
             data-testid="heading-team"
           >
             {t.aboutPage.team.title}
           </h2>
           <p 
-            className="text-lg text-muted-foreground max-w-3xl mx-auto"
+            className="text-lg text-slate-700 max-w-3xl mx-auto"
             data-testid="text-team-description"
           >
             {t.aboutPage.team.subtitle}
@@ -191,7 +191,7 @@ function TeamMemberCard({ member, index, isVisible, shouldAnimate }: TeamMemberC
       onMouseLeave={() => setShowTooltip(false)}
       data-testid={`card-team-${member.name.toLowerCase().replace(/\s+/g, '-')}`}
     >
-      <div className="bg-card border border-card-border rounded-2xl p-6 space-y-4 hover-elevate active-elevate-2 transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(244,180,0,0.3)]">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-4 hover-elevate active-elevate-2 transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(244,180,0,0.3)]">
         <div className="flex justify-center">
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-primary/60 opacity-30 blur-xl group-hover:opacity-50 transition-opacity duration-300" />
@@ -216,7 +216,7 @@ function TeamMemberCard({ member, index, isVisible, shouldAnimate }: TeamMemberC
 
         <div className="text-center space-y-2">
           <h3 
-            className="font-heading font-semibold text-xl text-card-foreground"
+            className="font-heading font-semibold text-xl text-slate-950"
             data-testid={`text-name-${member.name.toLowerCase().replace(/\s+/g, '-')}`}
           >
             {member.name}
@@ -227,7 +227,7 @@ function TeamMemberCard({ member, index, isVisible, shouldAnimate }: TeamMemberC
           >
             {member.role}
           </p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
+          <p className="text-sm text-slate-600 leading-relaxed">
             {member.bio}
           </p>
         </div>
