@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { BriefcaseBusiness, Globe, Smartphone, Sparkles, UsersRound } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import { useTranslation } from "@/locales";
 import LinkButton from "@/components/LinkButton";
@@ -7,6 +7,7 @@ import LinkButton from "@/components/LinkButton";
 export default function AppsHero() {
   const { language } = useLanguage();
   const t = useTranslation(language);
+  const highlightIcons = [Smartphone, Globe, BriefcaseBusiness, UsersRound];
 
   return (
     <section
@@ -47,14 +48,18 @@ export default function AppsHero() {
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10 max-w-3xl mx-auto">
-            {t.appsPage.hero.highlights.map((highlight) => (
+            {t.appsPage.hero.highlights.map((highlight, index) => {
+              const Icon = highlightIcons[index] ?? Sparkles;
+              return (
               <div
                 key={highlight}
-                className="min-h-[76px] rounded-xl border border-white/15 bg-[#050813]/45 px-4 py-3 flex items-end justify-center backdrop-blur-sm"
+                className="min-h-[104px] rounded-xl border border-white/15 bg-[#050813]/45 px-4 py-4 flex flex-col items-center justify-center gap-3 backdrop-blur-sm"
               >
+                <Icon className="h-7 w-7 text-[#8A6CFF]" strokeWidth={1.7} />
                 <span className="text-sm md:text-base font-semibold text-white leading-snug">{highlight}</span>
               </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="flex flex-wrap gap-4 justify-center">
