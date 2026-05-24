@@ -487,12 +487,12 @@ export const en = {
   // Apps Landing Page
   appsPage: {
     hero: {
-      badge: "App Development",
-      title: "Custom Apps That Help You Earn Trust and Close Better Leads",
-      subtitle: "We create apps for high-ticket service businesses that need a cleaner way to capture leads, follow up, nurture prospects, and hand off ready opportunities to the team.",
+      badge: "Idea. Design. Build. Scale.",
+      title: "Powerful Apps. Real Growth Systems.",
+      subtitle: "We design and build mobile and web apps that streamline operations, connect your lead flow, and give customers a smoother experience from first click to follow-up.",
       ctaPrimary: "Plan My App",
       ctaSecondary: "See the Process",
-      mockupRows: ["Ready lead received", "CRM follow-up active", "Trust updates sent", "SEO and outreach synced"]
+      highlights: ["Mobile Apps", "Web Platforms", "Cloud Solutions", "Analytics & Insights"]
     },
     problem: {
       title: "Leads Slip Away When the Experience Feels Disconnected",

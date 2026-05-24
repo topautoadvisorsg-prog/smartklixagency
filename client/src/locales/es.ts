@@ -487,12 +487,12 @@ export const es = {
   // Apps Landing Page
   appsPage: {
     hero: {
-      badge: "Desarrollo de Apps",
-      title: "Apps Personalizadas Que Generan Confianza y Cierran Mejores Leads",
-      subtitle: "Creamos apps para negocios de alto ticket que necesitan una forma mas limpia de captar leads, dar seguimiento, nutrir prospectos y entregar oportunidades listas al equipo.",
+      badge: "Idea. Diseño. Desarrollo. Escala.",
+      title: "Apps Poderosas. Crecimiento Real.",
+      subtitle: "Diseñamos y desarrollamos apps móviles y web que ordenan operaciones, conectan tu flujo de leads y crean una mejor experiencia desde el primer clic hasta el seguimiento.",
       ctaPrimary: "Planear Mi App",
       ctaSecondary: "Ver Proceso",
-      mockupRows: ["Lead listo recibido", "Seguimiento CRM activo", "Actualizaciones enviadas", "SEO y outreach conectados"]
+      highlights: ["Apps Móviles", "Plataformas Web", "Soluciones Cloud", "Analítica e Insights"]
     },
     problem: {
       title: "Los Leads Se Pierden Cuando la Experiencia Esta Desconectada",

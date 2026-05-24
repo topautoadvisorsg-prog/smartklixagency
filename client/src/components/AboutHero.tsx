@@ -5,7 +5,7 @@ import { useTranslation } from "@/locales";
 /**
  * SECTION: About Hero - Last updated Apr 2026
  * 
- * Full-bleed background video hero with centered headline, subtext, and CTAs.
+ * Full-bleed background image hero with centered headline, subtext, and CTAs.
  * Features a subtle dark overlay for readability, scroll-triggered entrance animations,
  * and smooth scroll to team/values sections.
  */
@@ -71,15 +71,13 @@ export default function AboutHero() {
       className="relative min-h-[70vh] md:min-h-[800px] pt-[140px] pb-24 overflow-hidden flex items-center justify-center"
       data-testid="section-about-hero"
     >
-      {/* Full background video — sits behind everything via z-0, edge-to-edge */}
-      <video
+      {/* Full background image - sits behind everything via z-0, edge-to-edge */}
+      <img
         className="absolute inset-0 w-full h-full object-cover"
         style={{ zIndex: 0 }}
-        src="/assets/about-hero.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
+        src="/assets/about-hero-v2.png"
+        alt=""
+        aria-hidden="true"
       />
 
       {/* Subtle dark overlay for text readability */}
@@ -88,7 +86,7 @@ export default function AboutHero() {
         style={{ zIndex: 1, background: "rgba(0, 0, 0, 0.45)" }}
       />
 
-      {/* Hero content — positioned above video + overlay */}
+      {/* Hero content — positioned above image + overlay */}
       <div className="container mx-auto px-4 relative" style={{ zIndex: 2 }}>
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-8">
           <h1
