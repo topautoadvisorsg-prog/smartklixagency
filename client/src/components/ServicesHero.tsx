@@ -41,7 +41,7 @@ export default function ServicesHero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="font-heading font-bold text-5xl md:text-6xl lg:text-7xl leading-tight text-white drop-shadow-lg mb-6"
+            className="font-heading font-bold text-6xl md:text-7xl lg:text-8xl leading-tight text-white drop-shadow-lg mb-6"
           >
             {t.servicesPage.hero.title}
           </motion.h1>
@@ -50,7 +50,7 @@ export default function ServicesHero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mb-8 text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-[#F4B400]"
+            className="mb-8 text-base md:text-lg lg:text-xl font-semibold uppercase tracking-[0.18em] md:tracking-[0.2em] text-[#F4B400]"
           >
             {t.servicesPage.hero.pillars.websites} / {t.servicesPage.hero.pillars.apps} / {t.servicesPage.hero.pillars.automation} / {t.servicesPage.hero.pillars.branding}
           </motion.p>
