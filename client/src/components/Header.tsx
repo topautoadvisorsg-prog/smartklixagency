@@ -25,8 +25,10 @@ export default function Header() {
     { path: "/", label: t.nav.home },
     { path: "/services", label: t.nav.services },
     { path: "/about", label: t.nav.about },
-    { path: "/contact", label: t.nav.contact },
+    { path: "/contact#contact-form", label: t.nav.contact },
   ];
+
+  const currentPath = location.split("#")[0];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border shadow-sm transition-all duration-300">
@@ -55,7 +57,7 @@ export default function Header() {
                 <Link 
                   href={link.path}
                   className={`text-[17px] font-medium tracking-wide transition-all duration-300 relative pb-1 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-primary after:rounded-full after:transition-transform after:duration-300 after:origin-left ${
-                    location === link.path || (link.path === '/services' && location.startsWith('/services'))
+                    currentPath === link.path.split("#")[0] || (link.path === '/services' && currentPath.startsWith('/services'))
                       ? "text-foreground after:scale-x-100"
                       : "text-muted-foreground hover:text-foreground hover:after:scale-x-100 after:scale-x-0"
                   }`}
@@ -141,7 +143,7 @@ export default function Header() {
                       href={link.path}
                       onClick={() => setIsMenuOpen(false)}
                       className={`block px-4 py-3 rounded-md font-medium transition-colors ${
-                        location === link.path || (link.path === '/services' && location.startsWith('/services'))
+                        currentPath === link.path.split("#")[0] || (link.path === '/services' && currentPath.startsWith('/services'))
                           ? "bg-sidebar-accent text-foreground"
                           : "text-muted-foreground hover:bg-accent hover:text-foreground"
                       }`}

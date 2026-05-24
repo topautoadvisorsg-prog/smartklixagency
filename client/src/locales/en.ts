@@ -487,12 +487,12 @@ export const en = {
   // Apps Landing Page
   appsPage: {
     hero: {
-      badge: "Idea. Design. Build. Scale.",
-      title: "Powerful Apps. Real Growth Systems.",
-      subtitle: "We design and build mobile and web apps that streamline operations, connect your lead flow, and give customers a smoother experience from first click to follow-up.",
+      badge: "Idea. Design. Build. Launch.",
+      title: "Custom Apps for Any Vision.",
+      subtitle: "From business tools and customer portals to commercial platforms, marketplaces, learning apps, booking systems, and bold new product ideas, we design and build apps around what you want to create.",
       ctaPrimary: "Plan My App",
       ctaSecondary: "See the Process",
-      highlights: ["Mobile Apps", "Web Platforms", "Cloud Solutions", "Analytics & Insights"]
+      highlights: ["Mobile Apps", "Web Platforms", "Business Tools", "User Products"]
     },
     problem: {
       title: "Leads Slip Away When the Experience Feels Disconnected",

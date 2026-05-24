@@ -14,15 +14,15 @@ export default function AppsHero() {
       data-testid="section-apps-hero"
     >
       <img
-        src="/assets/apps-hero-v2.png"
+        src="/assets/apps-hero-v3.png"
         alt=""
         aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover object-center"
         style={{ zIndex: 0 }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#050813]/95 via-[#050813]/70 to-[#050813]/10" style={{ zIndex: 1 }} />
+      <div className="absolute inset-0 bg-[#050813]/45" style={{ zIndex: 1 }} />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#050813]/70 via-[#050813]/25 to-[#050813]/80" style={{ zIndex: 1 }} />
       <div className="absolute inset-0 bg-gradient-to-t from-[#050813]/80 via-transparent to-[#050813]/10" style={{ zIndex: 1 }} />
-      <div className="absolute left-0 top-0 h-full w-[58%] bg-[#050813]/35 backdrop-blur-[1px]" style={{ zIndex: 1 }} />
 
       <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" style={{ zIndex: 1 }} />
 
@@ -31,33 +31,33 @@ export default function AppsHero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="max-w-2xl"
+          className="max-w-4xl mx-auto text-center"
         >
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-white">
             <Sparkles className="w-4 h-4 text-[#7C5CFF]" />
             <span className="text-sm font-semibold tracking-wider uppercase">{t.appsPage.hero.badge}</span>
           </div>
 
-          <h1 className="font-heading font-bold text-5xl md:text-6xl lg:text-7xl leading-tight text-white mb-7 max-w-xl">
+          <h1 className="font-heading font-bold text-5xl md:text-6xl lg:text-7xl leading-tight text-white mb-7 max-w-4xl mx-auto drop-shadow-lg">
             {t.appsPage.hero.title}
           </h1>
 
-          <p className="text-lg md:text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-xl mb-8">
+          <p className="text-lg md:text-xl lg:text-2xl text-gray-100 leading-relaxed max-w-3xl mx-auto mb-8 drop-shadow">
             {t.appsPage.hero.subtitle}
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10 max-w-xl">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10 max-w-3xl mx-auto">
             {t.appsPage.hero.highlights.map((highlight) => (
               <div
                 key={highlight}
-                className="min-h-[86px] rounded-xl border border-white/15 bg-white/[0.06] px-4 py-3 flex items-end"
+                className="min-h-[76px] rounded-xl border border-white/15 bg-[#050813]/45 px-4 py-3 flex items-end justify-center backdrop-blur-sm"
               >
                 <span className="text-sm md:text-base font-semibold text-white leading-snug">{highlight}</span>
               </div>
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 justify-center">
             <LinkButton href="/contact#contact-form" variant="primary" size="xl">
               {t.appsPage.hero.ctaPrimary}
             </LinkButton>

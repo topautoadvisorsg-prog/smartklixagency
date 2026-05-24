@@ -73,7 +73,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link 
-                  href="/contact" 
+                  href="/contact#contact-form" 
                   className="text-foreground/80 hover:text-sidebar-primary transition-colors duration-300 footer-link"
                   data-testid="link-footer-contact"
                 >

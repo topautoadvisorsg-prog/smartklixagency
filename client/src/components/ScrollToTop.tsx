@@ -14,7 +14,21 @@ export default function ScrollToTop() {
   const [location] = useLocation();
 
   useEffect(() => {
-    // Scroll to top smoothly whenever the route changes
+    const hash = window.location.hash.replace("#", "") || location.split("#")[1];
+
+    if (hash) {
+      const scrollToHash = () => {
+        document.getElementById(hash)?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      };
+
+      window.setTimeout(scrollToHash, 0);
+      window.setTimeout(scrollToHash, 250);
+      return;
+    }
+
     window.scrollTo({
       top: 0,
       behavior: "smooth",

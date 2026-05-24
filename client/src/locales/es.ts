@@ -487,12 +487,12 @@ export const es = {
   // Apps Landing Page
   appsPage: {
     hero: {
-      badge: "Idea. Diseño. Desarrollo. Escala.",
-      title: "Apps Poderosas. Crecimiento Real.",
-      subtitle: "Diseñamos y desarrollamos apps móviles y web que ordenan operaciones, conectan tu flujo de leads y crean una mejor experiencia desde el primer clic hasta el seguimiento.",
+      badge: "Idea. Diseño. Desarrollo. Lanzamiento.",
+      title: "Apps Personalizadas Para Cualquier Visión.",
+      subtitle: "Desde herramientas de negocio y portales de cliente hasta plataformas comerciales, marketplaces, apps educativas, sistemas de reservas y nuevas ideas de producto, diseñamos y creamos apps alrededor de lo que quieres construir.",
       ctaPrimary: "Planear Mi App",
       ctaSecondary: "Ver Proceso",
-      highlights: ["Apps Móviles", "Plataformas Web", "Soluciones Cloud", "Analítica e Insights"]
+      highlights: ["Apps Móviles", "Plataformas Web", "Herramientas de Negocio", "Productos para Usuarios"]
     },
     problem: {
       title: "Los Leads Se Pierden Cuando la Experiencia Esta Desconectada",

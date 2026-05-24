@@ -138,7 +138,7 @@ export default function FreeConsultation() {
               transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1], delay: 0.4 }}
             >
               <Link
-                href="/contact"
+                href="/contact#contact-form"
                 data-testid="button-book-consultation"
                 className="cta-button inline-flex items-center gap-2 bg-sidebar-primary text-card-foreground font-heading font-semibold px-8 py-4 rounded-lg transition-all duration-300 group"
               >

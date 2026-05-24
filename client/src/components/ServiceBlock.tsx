@@ -54,7 +54,7 @@ export default function ServiceBlock({ icon: Icon, title, description, features,
           ))}
         </ul>
         <LinkButton 
-          href="/contact" 
+          href="/contact#contact-form" 
           variant="primary" 
           data-testid={`button-quote-${title.toLowerCase().replace(/\s+/g, '-')}`}
         >
