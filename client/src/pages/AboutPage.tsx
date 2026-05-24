@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useLanguage } from "@/lib/LanguageContext";
+import { useTranslation } from "@/locales";
 import Header from "@/components/Header";
 import AboutHero from "@/components/AboutHero";
 import MissionStorySection from "@/components/MissionStorySection";
@@ -5,56 +8,51 @@ import TeamGrid from "@/components/TeamGrid";
 import ValuesSection from "@/components/ValuesSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import SEOMeta from "@/components/SEOMeta";
 
 export default function AboutPage() {
-  //todo: remove mock functionality
+  const { language } = useLanguage();
+  const t = useTranslation(language);
+
   const teamMembers = [
     {
       name: "Jovan Palomera",
-      role: "Director of Strategy & Solutions",
-      bio: "Strategic visionary with over 8 years of experience helping businesses leverage technology for growth.",
+      role: language === 'en' ? "Director of Strategy & Solutions" : "Director de Estrategia y Soluciones",
+      bio: language === 'en' 
+        ? "Strategic visionary with over 8 years of experience helping businesses leverage technology for growth."
+        : "Visionario estratégico con más de 8 años de experiencia ayudando a empresas a aprovechar la tecnología para crecer.",
       initials: "JP",
-      specialization: "Digital Transformation & Business Growth"
+      specialization: language === 'en' ? "Digital Transformation & Business Growth" : "Transformación Digital y Crecimiento Empresarial",
+      image: "/team/jovan.jpg"
     },
     {
-      name: "Christian De La Rosa",
-      role: "Director of Operations",
-      bio: "Operations expert focused on delivering projects on time and exceeding client expectations.",
-      initials: "CD",
-      specialization: "Project Management & Quality Assurance"
-    },
-    {
-      name: "Sofia Martínez",
-      role: "Lead Web Designer",
-      bio: "Creative designer with a passion for creating beautiful, functional websites that convert visitors into customers.",
-      initials: "SM",
-      specialization: "UX/UI Design & Brand Identity"
-    },
-    {
-      name: "Javier Torres",
-      role: "Automation Engineer",
-      bio: "Technical specialist in AI and automation solutions that save businesses time and increase efficiency.",
-      initials: "JT",
-      specialization: "Specialized in GPT Integrations"
-    },
-    {
-      name: "Andrea Gomez",
-      role: "Client Success Manager",
-      bio: "Dedicated to ensuring every client achieves their goals with ongoing support and guidance.",
-      initials: "AG",
-      specialization: "Client Relations & Support Excellence"
+      name: "Heraclio (JR) Munoz",
+      role: language === 'en' ? "Director of Operations" : "Director de Operaciones",
+      bio: language === 'en'
+        ? "Operations expert focused on delivering projects on time and exceeding client expectations."
+        : "Experto en operaciones enfocado en entregar proyectos a tiempo y superar las expectativas del cliente.",
+      initials: "HM",
+      specialization: language === 'en' ? "Project Management & Quality Assurance" : "Gestión de Proyectos y Aseguramiento de Calidad"
     },
     {
       name: "Diego Morales",
-      role: "SEO & Content Strategist",
-      bio: "SEO expert focused on improving search rankings and driving organic traffic for your business.",
+      role: language === 'en' ? "SEO & Content Strategist" : "Estratega de SEO y Contenidos",
+      bio: language === 'en'
+        ? "SEO expert focused on improving search rankings and driving organic traffic for your business."
+        : "Experto en SEO enfocado en mejorar el posicionamiento en búsquedas y generar tráfico orgánico para tu negocio.",
       initials: "DM",
-      specialization: "Search Engine Optimization & Analytics"
+      specialization: language === 'en' ? "Search Engine Optimization & Analytics" : "Optimización de Motores de Búsqueda y Analítica",
+      image: "/team/diego.jpg"
     }
   ];
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOMeta 
+        title={t.metadata.about.title}
+        description={t.metadata.about.description}
+        canonicalUrl="/about"
+      />
       <Header />
       <AboutHero />
       <MissionStorySection />

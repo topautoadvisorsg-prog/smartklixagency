@@ -4,6 +4,9 @@ import ServiceCard from "./ServiceCard";
 import MonitorIcon from "./icons/MonitorIcon";
 import GearIcon from "./icons/GearIcon";
 import RocketIcon from "./icons/RocketIcon";
+import { Smartphone } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
+import { useTranslation } from "@/locales";
 
 /**
  * ServicesPreview - Showcases core service offerings
@@ -12,27 +15,37 @@ import RocketIcon from "./icons/RocketIcon";
  * and staggered card reveals for premium UX.
  */
 export default function ServicesPreview() {
+  const { language } = useLanguage();
+  const t = useTranslation(language);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   const services = [
     {
       icon: MonitorIcon,
-      title: "Website Development",
-      description: "Modern, responsive, conversion-focused websites built to scale with your business.",
-      link: "/services#web-development"
+      title: t.servicesPreview.services.webDesign.title,
+      description: t.servicesPreview.services.webDesign.description,
+      link: "/services/websites"
+    },
+    {
+      icon: ({ className }: { isVisible?: boolean; className?: string }) => (
+        <Smartphone className={className ?? "w-16 h-16"} strokeWidth={1.5} />
+      ),
+      title: t.servicesPreview.services.apps.title,
+      description: t.servicesPreview.services.apps.description,
+      link: "/services/apps"
     },
     {
       icon: GearIcon,
-      title: "Automation & Integrations",
-      description: "We connect your systems—CRMs, payments, chatbots, and email—so your business runs automatically.",
-      link: "/services#automation"
+      title: t.servicesPreview.services.automation.title,
+      description: t.servicesPreview.services.automation.description,
+      link: "/services/automation"
     },
     {
       icon: RocketIcon,
-      title: "Digital Brand Services",
-      description: "From naming to launches, we craft your brand identity and digital presence.",
-      link: "/services#branding"
+      title: t.servicesPreview.services.branding.title,
+      description: t.servicesPreview.services.branding.description,
+      link: "/services/branding"
     }
   ];
 
@@ -84,7 +97,7 @@ export default function ServicesPreview() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            What We Do
+            {t.servicesPreview.title}
           </motion.h2>
           <div className="flex justify-center mb-6">
             <motion.div 
@@ -103,11 +116,11 @@ export default function ServicesPreview() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
           >
-            From websites to full business automation — Smart Klix helps your brand run on autopilot.
+            {t.servicesPreview.subtitle}
           </motion.p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
           {services.map((service, index) => (
             <ServiceCard 
               key={service.title} 

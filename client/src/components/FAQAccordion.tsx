@@ -8,33 +8,8 @@ import {
   AccordionItem,
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
-
-const faqData = [
-  {
-    question: "Are the audits really free?",
-    answer: "Yes — your first audit is completely free. We'll set up a quick call to understand your goals, evaluate your current setup, and show how Smart Klix can improve your systems."
-  },
-  {
-    question: "How does pricing work?",
-    answer: "Every project is unique. After your free consultation, we'll provide a clear proposal based on what you need — no hidden costs, no surprises."
-  },
-  {
-    question: "Do you work remotely?",
-    answer: "Absolutely. We collaborate with clients nationwide and internationally, fully remote, using video calls and shared tools for seamless communication."
-  },
-  {
-    question: "Are you bilingual?",
-    answer: "Yes! We serve both English and Spanish-speaking clients. Our entire process, from onboarding to support, can be handled in either language."
-  },
-  {
-    question: "Do you only build websites?",
-    answer: "No — Smart Klix also provides automation, CRM integrations, SEO, and digital branding. We build complete digital systems, not just websites."
-  },
-  {
-    question: "How long does a typical project take?",
-    answer: "Most websites and automation systems launch in days, not months — depending on scope and complexity."
-  }
-];
+import { useLanguage } from "@/lib/LanguageContext";
+import { useTranslation } from "@/locales";
 
 /**
  * FAQAccordion - Frequently Asked Questions section
@@ -44,9 +19,30 @@ const faqData = [
  * default chevron to match brand specifications.
  */
 export default function FAQAccordion() {
+  const { language } = useLanguage();
+  const t = useTranslation(language);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const [openItem, setOpenItem] = useState<string>("item-0");
+
+  const faqData = [
+    {
+      question: t.contactPage.faq.questions.cost.question,
+      answer: t.contactPage.faq.questions.cost.answer
+    },
+    {
+      question: t.contactPage.faq.questions.timeline.question,
+      answer: t.contactPage.faq.questions.timeline.answer
+    },
+    {
+      question: t.contactPage.faq.questions.process.question,
+      answer: t.contactPage.faq.questions.process.answer
+    },
+    {
+      question: t.contactPage.faq.questions.support.question,
+      answer: t.contactPage.faq.questions.support.answer
+    }
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -78,7 +74,7 @@ export default function FAQAccordion() {
           transition={{ duration: 0.5, ease: [0.22, 0.61, 0.36, 1] }}
           className="font-heading font-bold text-4xl md:text-5xl text-center text-card-foreground mb-16"
         >
-          Frequently Asked Questions
+          {t.contactPage.faq.title}
         </motion.h2>
         
         <motion.div

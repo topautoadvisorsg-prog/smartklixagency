@@ -1,6 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/LanguageContext";
+import { useTranslation } from "@/locales";
 
 /**
  * Animated icon component interface
@@ -53,6 +55,9 @@ export default function ServiceCard({
   index = 0,
   isVisible = false
 }: ServiceCardProps) {
+  const { language } = useLanguage();
+  const t = useTranslation(language);
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -66,8 +71,8 @@ export default function ServiceCard({
       data-testid={`card-service-${title.toLowerCase().replace(/\s+/g, '-')}`}
     >
       <motion.div 
-        className="service-card group bg-white rounded-2xl p-8 md:p-8 text-center relative overflow-hidden"
-        whileHover={{ y: -6 }}
+        className="service-card group bg-card rounded-2xl p-8 md:p-8 text-center relative overflow-hidden border border-white/5 transition-all duration-300 hover:shadow-lg"
+        whileHover={{ scale: 1.02, y: -6 }}
         transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
       >
         {/* Animated gold gradient border sweep on hover */}
@@ -77,7 +82,7 @@ export default function ServiceCard({
           <Icon isVisible={isVisible} />
         </div>
         
-        <h3 className="font-heading font-semibold text-xl md:text-2xl text-primary mb-4 relative z-10">
+        <h3 className="font-heading font-semibold text-xl md:text-2xl text-foreground mb-4 relative z-10">
           {title}
         </h3>
         
@@ -90,7 +95,7 @@ export default function ServiceCard({
           className="inline-flex items-center gap-2 text-foreground font-medium transition-all duration-300 hover:text-sidebar-primary group/link relative z-10"
           data-testid={`link-service-${title.toLowerCase().replace(/\s+/g, '-')}`}
         >
-          Learn More
+          {language === 'en' ? 'Learn More' : 'Ver más'}
           <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-[6px]" />
         </Link>
       </motion.div>

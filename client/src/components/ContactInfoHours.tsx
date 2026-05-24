@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Calendar, Mail, Phone, Globe } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
+import { useTranslation } from "@/locales";
 
 /**
  * ContactInfoHours - Premium glassmorphic contact info section
@@ -10,38 +12,40 @@ import { Calendar, Mail, Phone, Globe } from "lucide-react";
  * scroll-triggered entrance animations.
  */
 export default function ContactInfoHours() {
+  const { language } = useLanguage();
+  const t = useTranslation(language);
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   const contactInfo = [
     {
       icon: Calendar,
-      label: "Business Hours",
+      label: t.contactPage.info.hours.label,
       details: [
-        "Mon–Fri: 9AM – 6PM PST",
-        "Sat: By appointment",
-        "Sun: Closed"
+        t.contactPage.info.hours.weekdays,
+        t.contactPage.info.hours.saturday,
+        t.contactPage.info.hours.sunday
       ],
       testId: "card-business-hours"
     },
     {
       icon: Mail,
-      label: "Email",
-      details: ["hello@smartklix.com"],
+      label: t.contactPage.info.email.label,
+      details: [t.contactPage.info.email.address],
       link: "mailto:hello@smartklix.com",
       testId: "card-email"
     },
     {
       icon: Phone,
-      label: "Phone",
-      details: ["+1 (555) 555-5555"],
+      label: t.contactPage.info.phone.label,
+      details: [t.contactPage.info.phone.number],
       link: "tel:+15555555555",
       testId: "card-phone"
     },
     {
       icon: Globe,
-      label: "Location",
-      details: ["Remote — Serving clients worldwide"],
+      label: t.contactPage.info.location.label,
+      details: [t.contactPage.info.location.text],
       testId: "card-location"
     }
   ];
@@ -67,10 +71,10 @@ export default function ContactInfoHours() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
-          className="font-heading font-bold text-4xl md:text-5xl text-primary text-center mb-4"
+          className="font-heading font-bold text-4xl md:text-5xl text-slate-900 text-center mb-4"
           data-testid="text-contact-info-headline"
         >
-          Get in Touch — We're Here When You Need Us
+          {t.contactPage.info.headline}
         </motion.h2>
 
         {/* Subheadline */}
@@ -78,10 +82,10 @@ export default function ContactInfoHours() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1], delay: 0.1 }}
-          className="text-lg md:text-xl text-muted-foreground text-center mb-16 max-w-2xl mx-auto"
+          className="text-lg md:text-xl text-slate-800 text-center mb-16 max-w-2xl mx-auto"
           data-testid="text-contact-info-subheadline"
         >
-          Reach out with your project or question — the Smart&nbsp;Klix team responds within 24 hours.
+          {t.contactPage.info.subheadline}
         </motion.p>
 
         {/* Info Cards Grid */}
@@ -108,7 +112,7 @@ export default function ContactInfoHours() {
                 </div>
 
                 {/* Label */}
-                <h3 className="font-heading font-semibold text-xl text-foreground text-center mb-4">
+                <h3 className="font-heading font-semibold text-xl text-slate-900 text-center mb-4">
                   {info.label}
                 </h3>
 
@@ -117,7 +121,7 @@ export default function ContactInfoHours() {
                   {info.details.map((detail, i) => (
                     <p 
                       key={i}
-                      className="text-muted-foreground text-sm leading-relaxed"
+                      className="text-slate-800 text-sm leading-relaxed"
                     >
                       {detail}
                     </p>

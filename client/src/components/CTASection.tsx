@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import LinkButton from "./LinkButton";
+import { useLanguage } from "@/lib/LanguageContext";
+import { useTranslation } from "@/locales";
 
 /**
  * Props for the CTASection component
@@ -39,15 +41,22 @@ interface CTASectionProps {
  * ```
  */
 export default function CTASection({
-  title = "Ready to Build Smarter?",
-  description = "Let's turn your website, automation, and brand into a system that works 24/7 — so you don't have to.",
-  primaryButtonText = "Start Your Free Consultation",
-  primaryButtonHref = "/contact",
-  secondaryButtonText = "See Our Work",
+  title,
+  description,
+  primaryButtonText,
+  primaryButtonHref = "/contact#contact-form",
+  secondaryButtonText,
   secondaryButtonHref = "/services"
 }: CTASectionProps) {
+  const { language } = useLanguage();
+  const t = useTranslation(language);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  
+  const finalTitle = title || t.cta.title;
+  const finalDescription = description || t.cta.description;
+  const finalPrimaryButtonText = primaryButtonText || t.cta.primaryButton;
+  const finalSecondaryButtonText = secondaryButtonText || t.cta.secondaryButton;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -69,7 +78,7 @@ export default function CTASection({
   return (
     <section 
       ref={sectionRef}
-      className="py-24 md:py-32 relative overflow-hidden bg-gradient-to-br from-[#0D1B2A] via-[#1a2f45] to-[#0D1B2A]"
+      className="py-24 md:py-32 relative overflow-hidden bg-[#0D1B2A] bg-gradient-to-br from-[#0D1B2A] via-[#1a2f45] to-[#0D1B2A]"
       data-testid="section-cta"
     >
       {/* Animated Background Elements */}
@@ -105,7 +114,7 @@ export default function CTASection({
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            {title}
+            {finalTitle}
           </h2>
 
           {/* Description */}
@@ -114,7 +123,7 @@ export default function CTASection({
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            {description}
+            {finalDescription}
           </p>
 
           {/* Buttons */}
@@ -129,18 +138,18 @@ export default function CTASection({
               className="bg-[#F4B400] text-[#0D1B2A] hover:bg-[#F4B400]/90 border-none font-heading font-semibold px-8 shadow-lg hover:shadow-xl hover:shadow-[#F4B400]/20 transition-all"
               data-testid="button-cta-primary"
             >
-              {primaryButtonText}
+              {finalPrimaryButtonText}
             </LinkButton>
             
-            {secondaryButtonText && secondaryButtonHref && (
+            {finalSecondaryButtonText && secondaryButtonHref && (
               <LinkButton 
                 href={secondaryButtonHref} 
                 variant="outline"
                 size="lg" 
-                className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 font-heading font-semibold px-8 backdrop-blur-sm"
+                className="border-2 border-white bg-white text-[#0D1B2A] hover:bg-white/90 hover:border-white font-heading font-semibold px-8"
                 data-testid="button-cta-secondary"
               >
-                {secondaryButtonText}
+                {finalSecondaryButtonText}
               </LinkButton>
             )}
           </div>

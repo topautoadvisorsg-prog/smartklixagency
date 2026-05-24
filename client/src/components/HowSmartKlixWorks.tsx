@@ -2,6 +2,8 @@ import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Search, Monitor, Brain, TrendingUp } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
+import { useTranslation } from "@/locales";
 
 interface ProcessStep {
   icon: LucideIcon;
@@ -347,30 +349,31 @@ function MobileTimelineStep({
  * sequential step reveals with floating icons, and vertical timeline on mobile.
  */
 export default function HowSmartKlixWorks() {
+  const { language } = useLanguage();
+  const t = useTranslation(language);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   const steps: ProcessStep[] = [
     {
       icon: Search,
-      title: "Discover",
-      description: "We learn about your goals, audience, and brand vision — so every solution fits your business perfectly."
+      title: t.process.steps.discover.title,
+      description: t.process.steps.discover.description
     },
     {
       icon: Monitor,
-      title: "Build",
-      description: "Our team designs and develops your website, automations, and integrated systems from the ground up."
+      title: t.process.steps.build.title,
+      description: t.process.steps.build.description
     },
     {
       icon: Brain,
-      title: "Automate",
-      subtitle: "(AI-Driven)",
-      description: "We integrate AI receptionists, GPT-powered systems, and advanced automations that streamline communication, leads, and operations — so your business runs 24/7."
+      title: t.process.steps.automate.title,
+      description: t.process.steps.automate.description
     },
     {
       icon: TrendingUp,
-      title: "Grow",
-      description: "Once live, we optimize performance, SEO, and automation metrics — setting your brand up for long-term growth."
+      title: t.process.steps.grow.title,
+      description: t.process.steps.grow.description
     }
   ];
 
@@ -417,10 +420,10 @@ export default function HowSmartKlixWorks() {
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="font-heading font-bold text-4xl md:text-5xl text-card-foreground mb-4">
-            How Smart&nbsp;Klix Works
+            {t.process.title}
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            From discovery to launch, we follow a proven process that keeps your project fast, simple, and built for the future.
+            {language === 'en' ? 'From discovery to launch, we follow a proven process that keeps your project fast, simple, and built for the future.' : 'Desde el descubrimiento hasta el lanzamiento, seguimos un proceso probado que mantiene tu proyecto rápido, simple y construido para el futuro.'}
           </p>
         </div>
 

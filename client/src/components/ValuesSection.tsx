@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Settings, Brain, Rocket, Handshake } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
+import { useTranslation } from "@/locales";
 
 interface ValuePillar {
   icon: typeof Settings;
@@ -8,6 +10,8 @@ interface ValuePillar {
 }
 
 export default function ValuesSection() {
+  const { language } = useLanguage();
+  const t = useTranslation(language);
   const [isVisible, setIsVisible] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -61,23 +65,23 @@ export default function ValuesSection() {
   const values: ValuePillar[] = [
     {
       icon: Settings,
-      title: "Automation-Driven Thinking",
-      description: "Every solution we build is designed to save time and eliminate repetition."
+      title: t.aboutPage.values.list.quality.title,
+      description: t.aboutPage.values.list.quality.description
     },
     {
       icon: Brain,
-      title: "Intelligent Design",
-      description: "We blend data, creativity, and AI to deliver sleek, user-focused experiences."
+      title: t.aboutPage.values.list.transparency.title,
+      description: t.aboutPage.values.list.transparency.description
     },
     {
       icon: Rocket,
-      title: "Scalable Foundations",
-      description: "SmartKlix systems are modular — ready to grow as your business grows."
+      title: t.aboutPage.values.list.growth.title,
+      description: t.aboutPage.values.list.growth.description
     },
     {
       icon: Handshake,
-      title: "Human Collaboration",
-      description: "Behind every system is a team that listens, understands, and executes with purpose."
+      title: t.aboutPage.values.list.impact.title,
+      description: t.aboutPage.values.list.impact.description
     }
   ];
 
@@ -87,7 +91,7 @@ export default function ValuesSection() {
     <section 
       id="values-section" 
       ref={sectionRef}
-      className="relative py-32 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
+      className="relative py-32 bg-gradient-to-b from-background to-muted overflow-hidden"
     >
       {shouldAnimate && <NetworkBackground />}
       
@@ -101,13 +105,13 @@ export default function ValuesSection() {
             className="font-heading font-bold text-5xl text-foreground mb-6"
             data-testid="heading-values"
           >
-            Why Businesses Choose SmartKlix
+            {t.aboutPage.values.title}
           </h2>
           <p 
             className="text-lg text-muted-foreground max-w-3xl mx-auto"
             data-testid="text-values-description"
           >
-            We don't just build websites or automations — we build reliable systems that help businesses grow smarter every day.
+            {language === 'en' ? 'We focus on delivering exceptional quality, maintaining transparency, fostering growth, and creating real impact for our clients.' : 'Nos enfocamos en ofrecer calidad excepcional, mantener transparencia, fomentar el crecimiento y crear un impacto real para nuestros clientes.'}
           </p>
         </div>
 
@@ -183,7 +187,7 @@ function ValueCard({ value, index, isVisible, shouldAnimate }: ValueCardProps) {
       style={{ transitionDelay: `${delay}ms` }}
       data-testid={`card-value-${value.title.toLowerCase().replace(/\s+/g, '-')}`}
     >
-      <div className="h-full bg-white/95 backdrop-blur-lg border border-card-border rounded-2xl p-8 shadow-md hover-elevate active-elevate-2 transition-all duration-300 hover:-translate-y-1.5 hover:border-sidebar-primary/50 hover:shadow-[0_8px_30px_rgba(244,180,0,0.25)]">
+      <div className="h-full bg-card/95 backdrop-blur-lg border border-card-border rounded-2xl p-8 shadow-md hover-elevate active-elevate-2 transition-all duration-300 hover:-translate-y-1.5 hover:border-sidebar-primary/50 hover:shadow-[0_8px_30px_rgba(244,180,0,0.25)]">
         <div className="flex justify-center mb-6">
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-sidebar-primary/10 blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-300" />

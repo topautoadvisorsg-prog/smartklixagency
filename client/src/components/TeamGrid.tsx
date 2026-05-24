@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Brain } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
+import { useTranslation } from "@/locales";
 
 interface TeamMember {
   name: string;
@@ -15,6 +16,8 @@ interface TeamGridProps {
 }
 
 export default function TeamGrid({ members }: TeamGridProps) {
+  const { language } = useLanguage();
+  const t = useTranslation(language);
   const [isVisible, setIsVisible] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -68,10 +71,12 @@ export default function TeamGrid({ members }: TeamGridProps) {
   const allMembers = [
     ...members,
     {
-      name: "Riplet AI",
-      role: "SmartKlix Integrated Assistant",
-      bio: "Helping clients 24/7 with intelligent automation and instant support.",
-      isAI: true
+      name: t.aboutPage.team.members.nina.name,
+      role: t.aboutPage.team.members.nina.role,
+      bio: t.aboutPage.team.members.nina.bio,
+      specialization: t.aboutPage.team.members.nina.specialization,
+      image: "/team/nina.jpg",
+      isNina: true
     }
   ];
 
@@ -95,13 +100,13 @@ export default function TeamGrid({ members }: TeamGridProps) {
             className="font-heading font-bold text-5xl text-foreground mb-6"
             data-testid="heading-team"
           >
-            Meet the Minds Behind SmartKlix
+            {t.aboutPage.team.title}
           </h2>
           <p 
             className="text-lg text-muted-foreground max-w-3xl mx-auto"
             data-testid="text-team-description"
           >
-            A creative collective of designers, developers, and automation engineers dedicated to building smarter digital systems for modern businesses.
+            {t.aboutPage.team.subtitle}
           </p>
         </div>
 
@@ -162,7 +167,7 @@ function NetworkBackground() {
 }
 
 interface TeamMemberCardProps {
-  member: TeamMember & { isAI?: boolean };
+  member: TeamMember & { isNina?: boolean };
   index: number;
   isVisible: boolean;
   shouldAnimate: boolean;
@@ -191,12 +196,7 @@ function TeamMemberCard({ member, index, isVisible, shouldAnimate }: TeamMemberC
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-primary/60 opacity-30 blur-xl group-hover:opacity-50 transition-opacity duration-300" />
             
-            {member.isAI ? (
-              <div className="relative w-40 h-40 rounded-full bg-gradient-to-br from-[#0D1B2A] to-[#1a2f45] flex items-center justify-center border-4 border-primary/40 shadow-[0_0_20px_rgba(244,180,0,0.4)]">
-                <Brain className="w-16 h-16 text-primary" strokeWidth={1.5} />
-                <div className="absolute inset-0 rounded-full border-2 border-primary/20 animate-ping-slow" />
-              </div>
-            ) : member.image ? (
+            {member.image ? (
               <div className="relative w-40 h-40 rounded-full border-4 border-primary/40 shadow-[0_0_20px_rgba(244,180,0,0.4)] overflow-hidden">
                 <img
                   src={member.image}

@@ -13,6 +13,8 @@ import {
 import { Workflow } from "lucide-react";
 import type { IconType } from "react-icons";
 import type { LucideIcon } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
+import { useTranslation } from "@/locales";
 
 interface Partner {
   name: string;
@@ -21,6 +23,8 @@ interface Partner {
 }
 
 export default function BrandPartnerCarousel() {
+  const { language } = useLanguage();
+  const t = useTranslation(language);
   const [isVisible, setIsVisible] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -68,18 +72,18 @@ export default function BrandPartnerCarousel() {
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
           <h2
-            className={`font-heading font-bold text-3xl md:text-4xl text-card-foreground mb-4 transition-all duration-700 ${
+            className={`font-heading font-bold text-3xl md:text-4xl text-slate-900 mb-4 transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            Powered by the Tools You Already Trust
+            {t.servicesPage.partners.title}
           </h2>
           <p
-            className={`text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto transition-all duration-700 delay-150 ${
+            className={`text-slate-900 text-lg md:text-xl max-w-3xl mx-auto transition-all duration-700 delay-150 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            SmartKlix connects seamlessly with the best automation, AI, and business platforms in the world.
+            {t.servicesPage.partners.subtitle}
           </p>
         </div>
 

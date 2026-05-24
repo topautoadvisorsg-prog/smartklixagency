@@ -1,96 +1,101 @@
 import { Link } from "wouter";
 import { Mail, Globe, Facebook, Instagram, Linkedin } from "lucide-react";
 import logoWebp from "@/assets/smartklix-logo.webp";
+import { useLanguage } from "@/lib/LanguageContext";
+import { useTranslation } from "@/locales";
 
 /**
- * Footer - Light-themed footer with brand, links, and contact information
+ * SECTION: Footer - Last updated Nov 2025
  * 
  * Features 3-column layout (desktop) with logo, quick links, and contact/social.
- * Includes hover animations and responsive mobile stacking.
+ * Animations: Logo float animation, link underline sweep, social icon glow on hover
+ * Responsive: Mobile stacking with centered alignment
  */
 export default function Footer() {
+  const { language } = useLanguage();
+  const t = useTranslation(language);
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-b from-white to-gray-50 pt-20 pb-8">
+    <footer className="bg-gradient-to-b from-background to-muted/30 pt-20 pb-8">
       <div className="container mx-auto px-4 max-w-[1200px]">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Left Column - Brand */}
           <div className="space-y-4">
-            <div className="space-y-2 mb-2">
+            <div className="flex flex-col items-center md:items-start mb-6">
               <img 
                 src={logoWebp} 
-                alt="Smart Klix Logo" 
-                className="w-32 md:w-36 max-w-[160px] h-auto logo-float"
+                alt="Smart Klix Logo - Professional Web Design and AI Automation Services"
+                className="w-32 md:w-36 max-w-[160px] h-auto logo-float mb-2"
                 data-testid="img-footer-logo"
               />
-              <h3 className="font-heading font-bold text-2xl text-card-foreground pl-4">
-                Smart&nbsp;Klix
+              <h3 className="font-heading font-bold text-2xl text-card-foreground md:pl-4">
+                Smart Klix
               </h3>
             </div>
-            <p className="text-muted-foreground leading-relaxed max-w-xs">
-              Smart design, automation, and scalable digital systems — built to help small businesses grow like enterprise brands.
+            <p className="text-foreground/80 leading-relaxed max-w-xs text-center md:text-left mx-auto md:mx-0">
+              {t.footer.brandDescription}
             </p>
           </div>
 
           {/* Center Column - Quick Links */}
           <div>
             <h4 className="font-heading font-semibold text-lg text-card-foreground mb-6">
-              Quick Links
+              {t.footer.quickLinks}
             </h4>
             <ul className="space-y-3">
               <li>
                 <Link 
                   href="/" 
-                  className="text-muted-foreground hover:text-sidebar-primary transition-colors duration-300 footer-link"
+                  className="text-foreground/80 hover:text-sidebar-primary transition-colors duration-300 footer-link"
                   data-testid="link-footer-home"
                 >
-                  Home
+                  {t.footer.links.home}
                 </Link>
               </li>
               <li>
                 <Link 
                   href="/about" 
-                  className="text-muted-foreground hover:text-sidebar-primary transition-colors duration-300 footer-link"
+                  className="text-foreground/80 hover:text-sidebar-primary transition-colors duration-300 footer-link"
                   data-testid="link-footer-about"
                 >
-                  About
+                  {t.footer.links.about}
                 </Link>
               </li>
               <li>
                 <Link 
                   href="/services" 
-                  className="text-muted-foreground hover:text-sidebar-primary transition-colors duration-300 footer-link"
+                  className="text-foreground/80 hover:text-sidebar-primary transition-colors duration-300 footer-link"
                   data-testid="link-footer-services"
                 >
-                  Services
+                  {t.footer.links.services}
                 </Link>
               </li>
               <li>
                 <Link 
                   href="/contact" 
-                  className="text-muted-foreground hover:text-sidebar-primary transition-colors duration-300 footer-link"
+                  className="text-foreground/80 hover:text-sidebar-primary transition-colors duration-300 footer-link"
                   data-testid="link-footer-contact"
                 >
-                  Contact
+                  {t.footer.links.contact}
                 </Link>
               </li>
               <li>
                 <Link 
                   href="/privacy" 
-                  className="text-muted-foreground hover:text-sidebar-primary transition-colors duration-300 footer-link"
+                  className="text-foreground/80 hover:text-sidebar-primary transition-colors duration-300 footer-link"
                   data-testid="link-footer-privacy"
                 >
-                  Privacy Policy
+                  {t.footer.links.privacy}
                 </Link>
               </li>
               <li>
                 <Link 
                   href="/terms" 
-                  className="text-muted-foreground hover:text-sidebar-primary transition-colors duration-300 footer-link"
+                  className="text-foreground/80 hover:text-sidebar-primary transition-colors duration-300 footer-link"
                   data-testid="link-footer-terms"
                 >
-                  Terms of Service
+                  {t.footer.links.terms}
                 </Link>
               </li>
             </ul>
@@ -99,23 +104,17 @@ export default function Footer() {
           {/* Right Column - Contact & Social */}
           <div>
             <h4 className="font-heading font-semibold text-lg text-card-foreground mb-6">
-              Contact & Social
+              {t.footer.contactSocial}
             </h4>
             <div className="space-y-4 mb-6">
               <a 
                 href="mailto:hello@smartklix.com" 
-                className="flex items-center gap-2 text-muted-foreground hover:text-sidebar-primary transition-colors duration-300"
+                className="flex items-center gap-2 text-foreground/80 hover:text-sidebar-primary transition-colors duration-300"
                 data-testid="link-footer-email"
               >
                 <Mail className="w-5 h-5" />
                 <span>hello@smartklix.com</span>
               </a>
-              <div className="flex items-start gap-2 text-muted-foreground">
-                <Globe className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                <span className="text-sm leading-relaxed">
-                  Serving clients remotely — bilingual (English / Spanish)
-                </span>
-              </div>
             </div>
 
             {/* Social Icons */}
@@ -155,9 +154,9 @@ export default function Footer() {
         </div>
 
         {/* Copyright Bar */}
-        <div className="border-t border-card-foreground/10 pt-6 text-center">
-          <p className="text-sm text-muted-foreground">
-            © {currentYear} Smart Klix. All rights reserved.
+        <div className="border-t border-border pt-6 text-center">
+          <p className="text-sm text-foreground/60">
+            {t.footer.copyright.replace('{year}', currentYear.toString())}
           </p>
         </div>
       </div>

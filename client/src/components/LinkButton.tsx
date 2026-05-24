@@ -9,7 +9,7 @@ type ButtonVariant = "primary" | "outline" | "ghost";
 /**
  * Button size types
  */
-type ButtonSize = "default" | "lg" | "sm";
+type ButtonSize = "default" | "lg" | "sm" | "xl" | "2xl";
 
 interface LinkButtonProps {
   /** URL to navigate to when clicked */
@@ -55,7 +55,9 @@ export default function LinkButton({
   const sizeStyles = {
     sm: "min-h-9 px-4 py-2 text-sm",
     default: "min-h-9 px-4 py-2 text-sm",
-    lg: "min-h-10 px-8 text-base",
+    lg: "min-h-12 px-8 text-lg",
+    xl: "min-h-14 px-10 text-lg",
+    "2xl": "min-h-16 px-12 text-xl",
   };
 
   const variantStyles = {

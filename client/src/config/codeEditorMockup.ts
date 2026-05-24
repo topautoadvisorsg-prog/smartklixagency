@@ -14,7 +14,7 @@ export const codeEditorMockup: CodeLine[] = [
   { indent: 0, color: "text-blue-400", text: "<html>" },
   { indent: 1, color: "text-blue-400", text: "<head>" },
   { indent: 2, color: "text-yellow-400", text: '<meta charset="UTF-8">' },
-  { indent: 2, color: "text-yellow-400", text: '<title>Smart Klix</title>' },
+  { indent: 2, color: "text-yellow-400", text: '<title>SmartKlix</title>' },
   { indent: 1, color: "text-blue-400", text: "</head>" },
   { indent: 1, color: "text-blue-400", text: "<body>" },
   { indent: 2, color: "text-yellow-400", text: '<h1>Launch. Grow.</h1>' },

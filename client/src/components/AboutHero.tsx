@@ -1,7 +1,17 @@
 import { useState, useEffect, useRef } from "react";
-import LinkButton from "./LinkButton";
+import { useLanguage } from "@/lib/LanguageContext";
+import { useTranslation } from "@/locales";
 
+/**
+ * SECTION: About Hero - Last updated Apr 2026
+ * 
+ * Full-bleed background video hero with centered headline, subtext, and CTAs.
+ * Features a subtle dark overlay for readability, scroll-triggered entrance animations,
+ * and smooth scroll to team/values sections.
+ */
 export default function AboutHero() {
+  const { language } = useLanguage();
+  const t = useTranslation(language);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -58,99 +68,74 @@ export default function AboutHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative pt-[140px] pb-24 overflow-hidden"
+      className="relative min-h-[70vh] md:min-h-[800px] pt-[140px] pb-24 overflow-hidden flex items-center justify-center"
       data-testid="section-about-hero"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-blue-50/30 to-amber-50/20 dark:from-slate-950 dark:via-blue-950/30 dark:to-amber-950/20 -z-10" />
+      {/* Full background video — sits behind everything via z-0, edge-to-edge */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ zIndex: 0 }}
+        src="/assets/about-hero.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
 
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center min-h-[600px]">
-          <div className="space-y-8">
-            <h1
-              className={`font-heading font-bold text-5xl md:text-6xl leading-tight text-foreground transition-all duration-700 ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-              data-testid="heading-hero-title"
-            >
-              The Humans and Systems Powering Tomorrow's Businesses
-            </h1>
+      {/* Subtle dark overlay for text readability */}
+      <div
+        className="absolute inset-0"
+        style={{ zIndex: 1, background: "rgba(0, 0, 0, 0.45)" }}
+      />
 
-            <p
-              className={`text-xl text-muted-foreground max-w-lg transition-all duration-700 delay-200 ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-              data-testid="text-hero-subtitle"
-            >
-              From small teams to growing enterprises, SmartKlix designs
-              intelligent systems that help people work smarter, scale faster,
-              and thrive globally.
-            </p>
+      {/* Hero content — positioned above video + overlay */}
+      <div className="container mx-auto px-4 relative" style={{ zIndex: 2 }}>
+        <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-8">
+          <h1
+            className={`font-heading font-bold text-5xl md:text-6xl lg:text-7xl leading-tight text-white transition-all duration-700 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+            data-testid="heading-hero-title"
+          >
+            {t.aboutPage.hero.title}
+          </h1>
 
-            <div
-              className={`flex flex-wrap gap-4 transition-all duration-700 delay-[400ms] ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-            >
-              <button
-                onClick={() => scrollToSection("team-section")}
-                className="inline-flex items-center justify-center min-h-12 px-8 text-base font-semibold rounded-md bg-primary text-primary-foreground border border-primary-border hover-elevate active-elevate-2 transition-all duration-300 relative overflow-hidden group"
-                data-testid="button-meet-team"
-              >
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                <span className="relative z-10">Meet the Team</span>
-              </button>
-
-              <button
-                onClick={() => scrollToSection("values-section")}
-                className="inline-flex items-center justify-center min-h-12 px-8 text-base font-semibold rounded-md bg-transparent text-foreground border border-border hover-elevate active-elevate-2 backdrop-blur-sm transition-all duration-300"
-                data-testid="button-our-vision"
-              >
-                Our Vision
-              </button>
-            </div>
-          </div>
+          <p
+            className={`text-xl md:text-2xl text-gray-200 max-w-2xl transition-all duration-700 delay-200 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+            data-testid="text-hero-subtitle"
+          >
+            {t.aboutPage.hero.subtitle}
+          </p>
 
           <div
-            className={`relative flex items-center justify-center transition-all duration-1000 delay-300 ${
-              isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+            className={`flex flex-wrap justify-center gap-4 transition-all duration-700 delay-[400ms] ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
             }`}
-            data-testid="container-video-placeholder"
           >
-            <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
-              <div
-                className="absolute inset-0 bg-[#0D1B2A] flex items-center justify-center"
-                data-testid="video-placeholder"
-              >
-                <div className="text-center space-y-4 px-6">
-                  <div className="w-20 h-20 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
-                    <svg
-                      className="w-10 h-10 text-primary"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      data-testid="icon-video-play"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                  <p className="text-sm text-muted-foreground/60">
-                    Video embed placeholder
-                  </p>
-                  <p className="text-xs text-muted-foreground/40">
-                    Reserved for cinematic brand video
-                  </p>
-                </div>
-              </div>
+            <button
+              onClick={() => scrollToSection("team-section")}
+              className="inline-flex items-center justify-center min-h-12 px-8 text-base font-semibold rounded-md bg-[#F4B400] text-[#0D1B2A] hover:bg-[#F4B400]/90 border-none hover-elevate active-elevate-2 shadow-lg hover:shadow-[0_0_20px_rgba(244,180,0,0.4)] transition-all duration-300 relative overflow-hidden group"
+              data-testid="button-meet-team"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              <span className="relative z-10">{t.aboutPage.hero.ctaMeet}</span>
+            </button>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B2A]/80 via-transparent to-transparent pointer-events-none" />
-            </div>
-
-            <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-blue-500/20 rounded-xl blur-xl -z-10 opacity-60" />
+            <button
+              onClick={() => scrollToSection("values-section")}
+              className="inline-flex items-center justify-center min-h-12 px-8 text-base font-semibold rounded-md bg-transparent text-white border border-white/50 hover:border-white hover:bg-white/10 backdrop-blur-sm transition-all duration-300"
+              data-testid="button-our-vision"
+            >
+              {t.aboutPage.hero.ctaVision}
+            </button>
           </div>
         </div>
       </div>

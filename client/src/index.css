@@ -237,6 +237,10 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply font-sans antialiased bg-background text-foreground;
   }
@@ -642,6 +646,30 @@
     }
   }
 
+  /* Floating Laptop Mockup - Web Development Section */
+  .floating-laptop-mockup {
+    animation: float 8s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(0, 123, 255, 0.25));
+    max-width: 580px;
+    transition: transform 0.3s ease;
+  }
+
+  .floating-laptop-mockup:hover {
+    transform: scale(1.03);
+  }
+
+  /* Floating Branding Mockup - Branding Services Section */
+  .floating-branding-mockup {
+    animation: float 8s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(244, 180, 0, 0.25));
+    max-width: 580px;
+    transition: transform 0.3s ease;
+  }
+
+  .floating-branding-mockup:hover {
+    transform: scale(1.03);
+  }
+
   /* Code Overlay Scrolling */
   .code-scroll {
     position: absolute;
@@ -700,49 +728,22 @@
     }
   }
 
-  /* AutomationSection Network Hub Animations */
-  .automation-node {
-    cursor: pointer;
-    transition: transform 0.3s ease;
+  /* ========== Network Hub — Premium Animations ========== */
+
+  /* Connection line glow pulse */
+  .hub-line-pulse {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+    animation: hub-line-flow 3s ease-in-out infinite;
   }
 
-  .automation-node:hover {
-    transform: scale(1.08);
-  }
-
-  .node-pulse {
-    animation: node-pulse 5s ease-in-out infinite;
-  }
-
-  .node-pulse-slow {
-    animation: node-pulse 6s ease-in-out infinite;
-  }
-
-  @keyframes node-pulse {
-    0%, 100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.8;
-      transform: scale(1.05);
-    }
-  }
-
-  .line-pulse {
-    stroke-dasharray: 300;
-    stroke-dashoffset: 300;
-    animation: line-pulse-flow 3s linear infinite;
-    opacity: 0.8;
-  }
-
-  @keyframes line-pulse-flow {
+  @keyframes hub-line-flow {
     0% {
-      stroke-dashoffset: 300;
+      stroke-dashoffset: 60;
       opacity: 0;
     }
-    50% {
-      opacity: 1;
+    40% {
+      opacity: 0.8;
     }
     100% {
       stroke-dashoffset: 0;
@@ -750,6 +751,103 @@
     }
   }
 
+  /* Endpoint dot pulse */
+  .hub-dot-pulse {
+    animation: hub-dot-glow 2.5s ease-in-out infinite;
+  }
+
+  @keyframes hub-dot-glow {
+    0%, 100% {
+      opacity: 0.3;
+      r: 0.8;
+    }
+    50% {
+      opacity: 0.8;
+      r: 1.2;
+    }
+  }
+
+  /* Concentric ring rotation */
+  .hub-ring-rotate {
+    transform-origin: 50% 50%;
+    animation: hub-ring-spin 25s linear infinite;
+  }
+
+  .hub-ring-rotate-reverse {
+    transform-origin: 50% 50%;
+    animation: hub-ring-spin 30s linear infinite reverse;
+  }
+
+  @keyframes hub-ring-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* Center orb breathing */
+  .hub-center-breathe {
+    animation: hub-breathe 3s ease-in-out infinite;
+  }
+
+  @keyframes hub-breathe {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.15;
+    }
+    50% {
+      transform: scale(1.3);
+      opacity: 0.05;
+    }
+  }
+
+  /* Outer node gentle floating */
+  .hub-node-float {
+    animation: hub-float 5s ease-in-out infinite;
+  }
+
+  @keyframes hub-float {
+    0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+    50%      { transform: translate(-50%, -50%) translateY(-6px); }
+  }
+
+  /* Node glow halo pulse */
+  .hub-glow-pulse {
+    animation: hub-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes hub-glow {
+    0%, 100% {
+      opacity: 0.4;
+      transform: translateX(-50%) scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: translateX(-50%) scale(1.15);
+    }
+  }
+
+  /* Background bokeh particles */
+  .hub-bokeh {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: hub-bokeh-drift linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes hub-bokeh-drift {
+    0% {
+      transform: translateY(0) translateX(0) scale(1);
+      opacity: 0;
+    }
+    15% { opacity: 0.5; }
+    85% { opacity: 0.4; }
+    100% {
+      transform: translateY(-80px) translateX(30px) scale(0.6);
+      opacity: 0;
+    }
+  }
+
+  /* Legacy — keep for backward compat */
   .particle-float {
     animation: particle-float-up 20s linear infinite;
   }
@@ -1111,17 +1209,17 @@
     }
   }
 
-  /* Brand Partner Carousel Animations */
+  /* Brand Partner Carousel Animations | Mobile: Full color by default, no grayscale - Nov 2025 */
   .partner-logo {
-    filter: grayscale(100%);
-    opacity: 0.4;
-    color: #6B7280;
+    filter: grayscale(0%);
+    opacity: 0.85;
+    color: var(--logo-color);
+    transition: all 0.3s ease;
   }
 
   .partner-logo-container:hover .partner-logo {
-    filter: grayscale(0%);
     opacity: 1;
-    color: var(--logo-color);
+    transform: scale(1.05);
   }
 
   .carousel-scroll {
@@ -1154,11 +1252,22 @@
     }
   }
 
-  /* Mobile performance optimization - disable animations on small screens */
+  /* Mobile optimization - enable key animations for better UX - Nov 2025 */
   @media (max-width: 767px) {
-    .node-pulse,
-    .node-pulse-slow,
-    .line-pulse,
+    /* Keep node and line animations active for Business Automation section */
+    .node-pulse {
+      animation: node-pulse 5s ease-in-out infinite;
+    }
+    
+    .node-pulse-slow {
+      animation: node-pulse 6s ease-in-out infinite;
+    }
+    
+    .line-pulse {
+      animation: line-pulse-flow 3s linear infinite;
+    }
+    
+    /* Disable particle background for performance */
     .particle-float {
       animation: none;
     }
@@ -1224,13 +1333,14 @@
       opacity: 0;
     }
 
+    /* Enable carousel animation on mobile - Nov 2025 */
     .carousel-scroll {
-      animation: none;
+      animation: carousel-slide 40s linear infinite;
     }
 
     .partner-logo {
       filter: grayscale(0%);
-      opacity: 0.6;
+      opacity: 0.85;
     }
 
     .gold-pulse {
@@ -1251,112 +1361,116 @@
     }
   }
 
-  /* Reduced motion for accessibility */
-  @media (prefers-reduced-motion: reduce) {
-    .animate-pulse-slow,
-    .animate-pulse-slower,
-    .animate-float,
-    .animate-float-slow,
-    .animate-float-slower,
-    .icon-pulse {
+  /* ═══════════════════════════════════════════════════════════
+     SERVICE LANDING PAGE ANIMATIONS — Apr 2026
+     ═══════════════════════════════════════════════════════════ */
+
+  /* Hero cinematic zoom — slow breathing scale for background images/videos */
+  @keyframes hero-cinematic-zoom {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .hero-cinematic-zoom {
+    animation: hero-cinematic-zoom 20s ease-in-out infinite;
+  }
+
+  /* Showcase card hover effects */
+  .showcase-card {
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    will-change: transform;
+  }
+
+  .showcase-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 20px rgba(244, 180, 0, 0.1);
+  }
+
+  .showcase-card .showcase-image {
+    transition: transform 0.5s ease-out;
+  }
+
+  .showcase-card:hover .showcase-image {
+    transform: scale(1.05);
+  }
+
+  /* Before/After divider pulse */
+  @keyframes divider-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+  }
+
+  .before-after-divider {
+    animation: divider-pulse 4s ease-in-out infinite;
+  }
+
+  /* Stat number glow */
+  .stat-glow {
+    text-shadow: 0 0 30px rgba(244, 180, 0, 0.3);
+  }
+
+  /* Feature card for service pages */
+  .feature-card-service {
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, border-color 0.3s ease-out;
+    will-change: transform;
+  }
+
+  .feature-card-service:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-color: rgba(244, 180, 0, 0.3);
+  }
+
+  /* Problem card subtle glow border */
+  .problem-card {
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  }
+
+  .problem-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(244, 180, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Mobile: disable new service page animations for performance */
+  @media (max-width: 767px) {
+    .hero-cinematic-zoom {
       animation: none;
+      transform: scale(1.02); /* Slight zoom to prevent edge gaps */
     }
 
-    .animate-slide-up-fade {
-      animation: none;
-      opacity: 1;
+    .showcase-card:hover,
+    .feature-card-service:hover,
+    .problem-card:hover {
       transform: none;
+      box-shadow: none;
     }
 
-    .service-card:hover {
+    .showcase-card:hover .showcase-image {
       transform: none;
-    }
-
-    .group:hover .icon-tilt {
-      transform: none;
-    }
-
-    .device-desktop,
-    .device-tablet,
-    .device-mobile {
-      animation: none;
-    }
-
-    .code-scroll {
-      animation: none;
-    }
-
-    .light-sweep {
-      animation: none;
-    }
-
-    .node-pulse,
-    .node-pulse-slow,
-    .line-pulse,
-    .particle-float {
-      animation: none;
-    }
-
-    .automation-node:hover {
-      transform: none;
-    }
-
-    .logo-rotate,
-    .product-breathing,
-    .orbit-trail,
-    .ambient-light-1,
-    .ambient-light-2,
-    .brand-particle,
-    .palette-card,
-    .typewriter-char {
-      animation: none;
-    }
-
-    .brand-cta-button:hover {
-      transform: none;
-    }
-
-    .brand-cta-button:hover::before {
-      left: -100%;
-    }
-
-    .badge-glow-pulse,
-    .animated-line-flow,
-    .light-sweep-bg {
-      animation: none;
-    }
-
-    .process-step-card:hover {
-      transform: none;
-      filter: none;
-    }
-
-    .cta-light-sweep,
-    .cta-particle {
-      animation: none;
-      opacity: 0;
-    }
-
-    .carousel-scroll {
-      animation: none;
-    }
-
-    .gold-pulse {
-      animation: none;
-    }
-
-    .animate-pulse-line,
-    .animate-ping-slow,
-    .animate-fade-in {
-      animation: none;
-    }
-
-    .network-lines {
-      opacity: 0;
-    }
-
-    .icon-pulse-slow {
-      animation: none;
     }
   }
+
+  /* Reduced motion for accessibility — service pages */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-cinematic-zoom {
+      animation: none;
+    }
+
+    .before-after-divider {
+      animation: none;
+      opacity: 0.5;
+    }
+
+    .showcase-card,
+    .feature-card-service,
+    .problem-card {
+      transition: none;
+    }
+  }
+}
+
+.bg-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }

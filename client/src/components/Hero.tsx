@@ -2,109 +2,194 @@ import { ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import LinkButton from "./LinkButton";
 import { editorConfig } from "@/config/codeEditorMockup";
+import { useLanguage } from "@/lib/LanguageContext";
+import { useTranslation } from "@/locales";
 
 /**
- * Hero - Main hero section for the homepage
+ * SECTION: Hero - Last updated Nov 2025
  * 
- * Features a headline, subtext, CTA buttons, code editor mockup,
- * gradient background, fade-in animations, and scroll indicator.
+ * Main hero section for homepage featuring headline, subtext, dual CTAs,
+ * and animated code editor mockup with typing effect.
+ * Animations: Fade-in entrance, typing animation loop, scroll indicator bounce
  */
 export default function Hero() {
-  const codeLines = useRef([
-    "<launch-smart-site />",
-    "<automate.crm() />",
-    "<grow.brand() />",
-    "<fix.webflow() />"
-  ]);
-
+  const { language } = useLanguage();
+  const t = useTranslation(language);
+  
+  const [completedLines, setCompletedLines] = useState<number[]>([]);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
-  const [currentText, setCurrentText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
+  const [currentTypingText, setCurrentTypingText] = useState("");
+  const [isFadingOut, setIsFadingOut] = useState(false);
+
+  // Update code lines when language changes - force complete reset
+  useEffect(() => {
+    // Reset animation when language changes
+    setCompletedLines([]);
+    setCurrentLineIndex(0);
+    setCurrentTypingText("");
+    setIsFadingOut(false);
+  }, [language]);
 
   useEffect(() => {
-    const currentLine = codeLines.current[currentLineIndex];
-
-    if (isPaused) {
-      const pauseTimeout = setTimeout(() => {
-        setIsPaused(false);
-        setIsDeleting(true);
-      }, 2000);
-      return () => clearTimeout(pauseTimeout);
+    const lines = t.hero.typingLines;
+    
+    // If we're fading out, wait then reset everything
+    if (isFadingOut) {
+      const resetTimeout = setTimeout(() => {
+        setCompletedLines([]);
+        setCurrentLineIndex(0);
+        setCurrentTypingText("");
+        setIsFadingOut(false);
+      }, 800); // Match fade animation duration
+      return () => clearTimeout(resetTimeout);
     }
 
-    const typingSpeed = isDeleting ? 50 : 100;
+    // If all lines are complete, trigger fade out
+    if (currentLineIndex >= lines.length) {
+      const fadeTimeout = setTimeout(() => {
+        setIsFadingOut(true);
+      }, 2000); // Pause before fading
+      return () => clearTimeout(fadeTimeout);
+    }
+
+    const currentLine = lines[currentLineIndex].text;
+    const typingSpeed = 80;
 
     const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        if (currentText.length < currentLine.length) {
-          setCurrentText(currentLine.substring(0, currentText.length + 1));
-        } else {
-          setIsPaused(true);
-        }
+      if (currentTypingText.length < currentLine.length) {
+        // Continue typing current line
+        setCurrentTypingText(currentLine.substring(0, currentTypingText.length + 1));
       } else {
-        if (currentText.length > 0) {
-          setCurrentText(currentText.substring(0, currentText.length - 1));
-        } else {
-          setIsDeleting(false);
-          setCurrentLineIndex((prevIndex) => (prevIndex + 1) % codeLines.current.length);
-        }
+        // Current line complete - add to completed lines and move to next
+        setTimeout(() => {
+          setCompletedLines(prev => [...prev, currentLineIndex]);
+          setCurrentLineIndex(prev => prev + 1);
+          setCurrentTypingText("");
+        }, 500); // Brief pause before next line
       }
     }, typingSpeed);
 
     return () => clearTimeout(timeout);
-  }, [currentText, isDeleting, currentLineIndex, isPaused]);
+  }, [currentTypingText, currentLineIndex, isFadingOut, t.hero.typingLines]);
 
-  const headlineWords = ["Fix.", "Launch.", "Grow.", "Automate."];
+  const renderTextWithHighlights = (text: string, lineIndex: number) => {
+    if (!text) return text;
+    
+    const lineData = t.hero.typingLines[lineIndex];
+    if (!lineData || !lineData.keywords) return text;
+    
+    const keywords = lineData.keywords;
+    let lastIndex = 0;
+    const parts = [];
+
+    keywords.forEach((keyword, idx) => {
+      const keywordIndex = text.indexOf(keyword, lastIndex);
+      if (keywordIndex !== -1 && keywordIndex + keyword.length <= text.length) {
+        if (keywordIndex > lastIndex) {
+          parts.push(
+            <span key={`text-${idx}`}>
+              {text.substring(lastIndex, keywordIndex)}
+            </span>
+          );
+        }
+        parts.push(
+          <span key={`keyword-${idx}`} className="text-[#F4B400]">
+            {keyword}
+          </span>
+        );
+        lastIndex = keywordIndex + keyword.length;
+      }
+    });
+
+    if (lastIndex < text.length) {
+      parts.push(
+        <span key="text-end">
+          {text.substring(lastIndex)}
+        </span>
+      );
+    }
+
+    return parts.length > 0 ? parts : text;
+  };
 
   return (
     <section className="relative pt-[140px] pb-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-background dark:from-slate-950 dark:via-blue-950 dark:to-background -z-10" />
+      {/* Gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-blue-100 to-background dark:from-slate-950 dark:via-blue-900 dark:to-background -z-10" />
+      
+      {/* Hero brand image background - new landing page hero image */}
+      <div
+        className="absolute inset-0 -z-10"
+        style={{ 
+          backgroundImage: "url('/assets/branding-hero-assets/hero-website-landing-page-new.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.15
+        }}
+      />
       
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center min-h-[600px]">
-          <div className="space-y-6">
-            <h1 className="font-heading font-bold text-5xl md:text-6xl leading-tight text-foreground">
-              {headlineWords.map((word, index) => (
+          <div className="space-y-8">
+            <h1 className="font-heading font-bold text-6xl md:text-7xl leading-tight text-foreground">
+              {t.hero.headline.map((word, index) => (
                 <span 
                   key={index} 
-                  className="inline-block mr-3 fade-in-word"
+                  className="inline-block fade-in-word"
                   style={{ animationDelay: `${index * 0.3}s` }}
                 >
                   {word}
+                  {index < t.hero.headline.length - 1 && (
+                    <span className="text-[#F4B400] mx-2">→</span>
+                  )}
                 </span>
               ))}
             </h1>
-            <p className="text-xl text-muted-foreground max-w-md fade-in-up animation-delay-1200">
-              AI-powered websites and automation for growing small businesses.
+            <p className="text-2xl text-muted-foreground max-w-md fade-in-up animation-delay-1200">
+              {t.hero.subheadline}
             </p>
-            <div className="flex flex-wrap gap-4 fade-in-up animation-delay-1800">
-              <LinkButton href="/contact" variant="primary" size="lg" data-testid="button-free-audit">
-                Get a Free Audit
+            <div className="flex flex-wrap gap-6 fade-in-up animation-delay-800">
+              <LinkButton href="/contact#contact-form" variant="primary" size="2xl" data-testid="button-free-audit">
+                {t.hero.ctaPrimary}
               </LinkButton>
-              <LinkButton href="/services" variant="outline" size="lg" data-testid="button-see-services">
-                See Services
+              <LinkButton href="/services" variant="outline" size="2xl" data-testid="button-see-services">
+                {t.hero.ctaSecondary}
               </LinkButton>
             </div>
           </div>
 
           <div className="flex justify-center items-center fade-in-up animation-delay-600" data-testid="container-code-editor-wrapper">
             <div className="relative w-full max-w-[650px] floating-editor" data-testid="container-code-editor">
-              <div style={{ backgroundColor: editorConfig.backgroundColor }} className="rounded-xl shadow-2xl overflow-hidden border border-slate-700/50" data-testid="container-code-editor-inner">
+              <div 
+                className="bg-[#0A0A0A] border border-white/10 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] overflow-hidden" 
+                data-testid="container-code-editor-inner"
+              >
                 <div className="bg-slate-800 px-4 py-3 flex items-center gap-2">
                   <div className={`w-3 h-3 rounded-full ${editorConfig.windowControls.close}`} />
                   <div className={`w-3 h-3 rounded-full ${editorConfig.windowControls.minimize}`} />
                   <div className={`w-3 h-3 rounded-full ${editorConfig.windowControls.maximize}`} />
                   <span className="ml-2 text-slate-400 text-sm font-mono">{editorConfig.fileName}</span>
                 </div>
-                <div className="p-6 font-mono text-sm h-[120px] flex items-center" data-testid="container-code-content">
-                  <div className="text-green-400" data-testid="text-typing-code">
-                    {currentText}
-                    <span className="blinking-cursor" data-testid="icon-cursor">|</span>
+                <div className="p-6 font-mono text-base h-[360px] flex items-start justify-start" data-testid="container-code-content">
+                  <div className={`text-gray-300 w-full space-y-2 transition-opacity duration-700 ${isFadingOut ? 'opacity-0' : 'opacity-100'}`} data-testid="text-typing-code">
+                    {/* Render all completed lines */}
+                    {completedLines.map((lineIdx) => (
+                      <div key={`line-${lineIdx}`} className="leading-relaxed">
+                        {renderTextWithHighlights(t.hero.typingLines[lineIdx].text, lineIdx)}
+                      </div>
+                    ))}
+                    
+                    {/* Render current typing line with cursor */}
+                    {currentLineIndex < t.hero.typingLines.length && (
+                      <div className="leading-relaxed">
+                        {renderTextWithHighlights(currentTypingText, currentLineIndex)}
+                        <span className="blinking-cursor" data-testid="icon-cursor">|</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
-              <div className="absolute -inset-1 bg-gradient-to-r from-sidebar-primary/20 to-blue-500/20 rounded-xl blur-xl -z-10 opacity-75" />
             </div>
           </div>
         </div>
@@ -185,6 +270,10 @@ export default function Hero() {
 
         .animation-delay-1200 {
           animation-delay: 1.2s;
+        }
+
+        .animation-delay-800 {
+          animation-delay: 0.8s;
         }
 
         .animation-delay-1800 {

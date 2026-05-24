@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { Search, Code, Settings, Rocket } from "lucide-react";
+import { Search, Monitor, Brain, TrendingUp } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
+import { useTranslation } from "@/locales";
 
 interface Step {
   number: string;
@@ -10,6 +12,8 @@ interface Step {
 }
 
 export default function ProcessSteps() {
+  const { language } = useLanguage();
+  const t = useTranslation(language);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -17,26 +21,26 @@ export default function ProcessSteps() {
     {
       number: "1",
       icon: Search,
-      title: "Discover",
-      description: "We research and plan with your goals in mind"
+      title: t.process.steps.discover.title,
+      description: t.process.steps.discover.description
     },
     {
       number: "2",
-      icon: Code,
-      title: "Build",
-      description: "We design and develop a custom website"
+      icon: Monitor,
+      title: t.process.steps.build.title,
+      description: t.process.steps.build.description
     },
     {
       number: "3",
-      icon: Settings,
-      title: "Automate",
-      description: "We integrate AI and automation tools for efficiency"
+      icon: Brain,
+      title: t.process.steps.automate.title,
+      description: t.process.steps.automate.description
     },
     {
       number: "4",
-      icon: Rocket,
-      title: "Launch & Grow",
-      description: "We deploy your site and optimize for growth"
+      icon: TrendingUp,
+      title: t.process.steps.grow.title,
+      description: t.process.steps.grow.description
     }
   ];
 
@@ -70,19 +74,12 @@ export default function ProcessSteps() {
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 
-            className={`font-heading font-bold text-4xl md:text-5xl text-card-foreground mb-4 transition-all duration-700 ${
+            className={`font-heading font-bold text-4xl md:text-5xl text-card-foreground transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            How SmartKlix Delivers Results
+            {t.process.title}
           </h2>
-          <p 
-            className={`text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed transition-all duration-700 delay-150 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            A proven process that combines research, design, and automation to build growth-ready systems.
-          </p>
         </div>
 
         {/* Timeline Container - Desktop Horizontal */}
